@@ -28,27 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.pnBannerLeft = new System.Windows.Forms.Panel();
             this.pnline1 = new XanderUI.XUIGradientPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnthoat = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pbLogo_login = new System.Windows.Forms.PictureBox();
             this.txtusername = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btndangnhap = new FontAwesome.Sharp.IconButton();
             this.cbshowpass = new XanderUI.XUICheckBox();
             this.lblChuyensangdky = new System.Windows.Forms.Label();
             this.lblmatkhau = new System.Windows.Forms.Label();
             this.txtpassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btndangnhap = new FontAwesome.Sharp.IconButton();
+            this.pbLogo_login = new System.Windows.Forms.PictureBox();
+            this.btnthoat = new FontAwesome.Sharp.IconButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnBannerLeft.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo_login)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo_login)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnBannerLeft
@@ -88,25 +89,6 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Change What You Eat\r\nChange The World.";
             // 
-            // btnthoat
-            // 
-            this.btnthoat.FlatAppearance.BorderSize = 0;
-            this.btnthoat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(219)))), ((int)(((byte)(149)))));
-            this.btnthoat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(150)))), ((int)(((byte)(131)))));
-            this.btnthoat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnthoat.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnthoat.IconChar = FontAwesome.Sharp.IconChar.Times;
-            this.btnthoat.IconColor = System.Drawing.Color.Black;
-            this.btnthoat.IconSize = 25;
-            this.btnthoat.Location = new System.Drawing.Point(0, 0);
-            this.btnthoat.Name = "btnthoat";
-            this.btnthoat.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.btnthoat.Rotation = 0D;
-            this.btnthoat.Size = new System.Drawing.Size(40, 40);
-            this.btnthoat.TabIndex = 2;
-            this.btnthoat.UseVisualStyleBackColor = true;
-            this.btnthoat.Click += new System.EventHandler(this.IBtnExit_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -117,18 +99,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Login";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(219)))), ((int)(((byte)(149)))));
-            this.pictureBox1.BackgroundImage = global::Viva_vegan.Properties.Resources.banner_login;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(87, 53);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(296, 420);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.pbLogo_login);
@@ -137,16 +107,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(302, 126);
             this.panel1.TabIndex = 1;
-            // 
-            // pbLogo_login
-            // 
-            this.pbLogo_login.BackgroundImage = global::Viva_vegan.Properties.Resources.logo_transparent;
-            this.pbLogo_login.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbLogo_login.Location = new System.Drawing.Point(53, -17);
-            this.pbLogo_login.Name = "pbLogo_login";
-            this.pbLogo_login.Size = new System.Drawing.Size(197, 161);
-            this.pbLogo_login.TabIndex = 0;
-            this.pbLogo_login.TabStop = false;
             // 
             // txtusername
             // 
@@ -171,28 +131,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(302, 378);
             this.panel2.TabIndex = 2;
-            // 
-            // btndangnhap
-            // 
-            this.btndangnhap.BackColor = System.Drawing.Color.White;
-            this.btndangnhap.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btndangnhap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btndangnhap.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btndangnhap.Font = new System.Drawing.Font("Minion Pro", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btndangnhap.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btndangnhap.IconChar = FontAwesome.Sharp.IconChar.SignInAlt;
-            this.btndangnhap.IconColor = System.Drawing.Color.DodgerBlue;
-            this.btndangnhap.IconSize = 30;
-            this.btndangnhap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btndangnhap.Location = new System.Drawing.Point(58, 163);
-            this.btndangnhap.Name = "btndangnhap";
-            this.btndangnhap.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btndangnhap.Rotation = 0D;
-            this.btndangnhap.Size = new System.Drawing.Size(187, 44);
-            this.btndangnhap.TabIndex = 12;
-            this.btndangnhap.Text = "Đăng nhập";
-            this.btndangnhap.UseVisualStyleBackColor = false;
-            this.btndangnhap.Click += new System.EventHandler(this.Btndangnhap_Click);
             // 
             // cbshowpass
             // 
@@ -257,6 +195,69 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Tên đăng nhập";
             // 
+            // btndangnhap
+            // 
+            this.btndangnhap.BackColor = System.Drawing.Color.White;
+            this.btndangnhap.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btndangnhap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btndangnhap.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btndangnhap.Font = new System.Drawing.Font("Minion Pro", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndangnhap.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btndangnhap.IconChar = FontAwesome.Sharp.IconChar.SignInAlt;
+            this.btndangnhap.IconColor = System.Drawing.Color.DodgerBlue;
+            this.btndangnhap.IconSize = 30;
+            this.btndangnhap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btndangnhap.Location = new System.Drawing.Point(58, 163);
+            this.btndangnhap.Name = "btndangnhap";
+            this.btndangnhap.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btndangnhap.Rotation = 0D;
+            this.btndangnhap.Size = new System.Drawing.Size(187, 44);
+            this.btndangnhap.TabIndex = 12;
+            this.btndangnhap.Text = "Đăng nhập";
+            this.btndangnhap.UseVisualStyleBackColor = false;
+            this.btndangnhap.Click += new System.EventHandler(this.Btndangnhap_Click);
+            // 
+            // pbLogo_login
+            // 
+            this.pbLogo_login.BackgroundImage = global::Viva_vegan.Properties.Resources.logo_transparent;
+            this.pbLogo_login.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbLogo_login.Location = new System.Drawing.Point(53, -17);
+            this.pbLogo_login.Name = "pbLogo_login";
+            this.pbLogo_login.Size = new System.Drawing.Size(197, 161);
+            this.pbLogo_login.TabIndex = 0;
+            this.pbLogo_login.TabStop = false;
+            // 
+            // btnthoat
+            // 
+            this.btnthoat.FlatAppearance.BorderSize = 0;
+            this.btnthoat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(219)))), ((int)(((byte)(149)))));
+            this.btnthoat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(150)))), ((int)(((byte)(131)))));
+            this.btnthoat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnthoat.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnthoat.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnthoat.IconColor = System.Drawing.Color.Black;
+            this.btnthoat.IconSize = 25;
+            this.btnthoat.Location = new System.Drawing.Point(0, 0);
+            this.btnthoat.Name = "btnthoat";
+            this.btnthoat.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.btnthoat.Rotation = 0D;
+            this.btnthoat.Size = new System.Drawing.Size(40, 40);
+            this.btnthoat.TabIndex = 2;
+            this.btnthoat.UseVisualStyleBackColor = true;
+            this.btnthoat.Click += new System.EventHandler(this.IBtnExit_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(219)))), ((int)(((byte)(149)))));
+            this.pictureBox1.BackgroundImage = global::Viva_vegan.Properties.Resources.banner_login;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(87, 53);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(296, 420);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,17 +269,18 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnBannerLeft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Login_KeyDown);
             this.pnBannerLeft.ResumeLayout(false);
             this.pnBannerLeft.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo_login)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo_login)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

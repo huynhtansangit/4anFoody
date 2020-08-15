@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
 using MetroFramework.Forms;
+
 namespace Viva_vegan
+
 {
     public partial class Dashboard : MetroFramework.Forms.MetroForm
     {
@@ -17,6 +19,8 @@ namespace Viva_vegan
         private IconButton currentButton;
         // line active button
         private Panel leftBorderBtn;
+        //form con 
+        private Form currentChildForm;
         public Dashboard()
         {
             InitializeComponent();
@@ -37,6 +41,23 @@ namespace Viva_vegan
             public static Color color6 = Color.FromArgb(24, 161, 251);
         }
         //Methods
+        private void openChildForm (Form childForm)
+        {
+            if (currentChildForm !=null)
+            {
+                // chỉ mở một form
+                currentChildForm.Close();
+            }
+            currentChildForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            pndesktop.Controls.Add(childForm);
+            pndesktop.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
         private void activeButton (object sender, Color color)
         {
             disableButton();
@@ -90,36 +111,46 @@ namespace Viva_vegan
         private void Btnbangdieukhien_Click(object sender, EventArgs e)
         {
             activeButton(sender, RGBColors.color1);
+            openChildForm(new FormDashboard.BangDieuKhien());
         }
 
         private void Btnbieudo_Click(object sender, EventArgs e)
         {
             activeButton(sender, RGBColors.color2);
+            openChildForm(new FormDashboard.DoanhThu());
         }
 
         private void Btngoimon_Click(object sender, EventArgs e)
         {
             activeButton(sender, RGBColors.color3);
+            openChildForm(new FormDashboard.GoiMon());
         }
 
         private void Btnhoatdong_Click(object sender, EventArgs e)
         {
             activeButton(sender, RGBColors.color4);
+            openChildForm(new FormDashboard.HoatDongGanDay());
         }
 
         private void Btnthanhtoan_Click(object sender, EventArgs e)
         {
             activeButton(sender, RGBColors.color5);
+            openChildForm(new FormDashboard.ThanhToan());
         }
 
         private void Btnthongtin_Click(object sender, EventArgs e)
         {
             activeButton(sender, RGBColors.color6);
+            openChildForm(new FormDashboard.ThongTin());
         }
 
         private void Btntrangchu_Click(object sender, EventArgs e)
         {
             Reset();
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
         }
         private void Reset()
         {
@@ -153,7 +184,16 @@ namespace Viva_vegan
 
         private void Btnlogout_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Đăng xuất khỏi ứng dụng ?", "Confirmation", MessageBoxButtons.YesNo);
+            if(result==DialogResult.Yes)
+            {
+                Application.Restart();
+            }
+        }
 
+        private void Dashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

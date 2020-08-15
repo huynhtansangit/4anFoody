@@ -68,12 +68,51 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassCSharp\Ban.cs" />
+    <Compile Include="ClassCSharp\MonAn.cs" />
+    <Compile Include="ClassCSharp\ThucUong.cs" />
     <Compile Include="ClassCSharp\User.cs" />
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDashboard\BangDieuKhien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashboard\BangDieuKhien.Designer.cs">
+      <DependentUpon>BangDieuKhien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDashboard\DoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashboard\DoanhThu.Designer.cs">
+      <DependentUpon>DoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDashboard\GoiMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashboard\GoiMon.Designer.cs">
+      <DependentUpon>GoiMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDashboard\HoatDongGanDay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashboard\HoatDongGanDay.Designer.cs">
+      <DependentUpon>HoatDongGanDay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDashboard\ThanhToan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashboard\ThanhToan.Designer.cs">
+      <DependentUpon>ThanhToan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDashboard\ThongTin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashboard\ThongTin.Designer.cs">
+      <DependentUpon>ThongTin.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -91,6 +130,24 @@
     </Compile>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboard\BangDieuKhien.resx">
+      <DependentUpon>BangDieuKhien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboard\DoanhThu.resx">
+      <DependentUpon>DoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboard\GoiMon.resx">
+      <DependentUpon>GoiMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboard\HoatDongGanDay.resx">
+      <DependentUpon>HoatDongGanDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboard\ThanhToan.resx">
+      <DependentUpon>ThanhToan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboard\ThongTin.resx">
+      <DependentUpon>ThongTin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

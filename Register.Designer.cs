@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Register));
             this.xuiFlatTab1 = new XanderUI.XUIFlatTab();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.xuiFlatTab1.SuspendLayout();
             this.SuspendLayout();
@@ -39,29 +39,18 @@
             this.xuiFlatTab1.ActiveHeaderColor = System.Drawing.Color.DodgerBlue;
             this.xuiFlatTab1.ActiveTextColor = System.Drawing.Color.White;
             this.xuiFlatTab1.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.xuiFlatTab1.Controls.Add(this.tabPage2);
             this.xuiFlatTab1.Controls.Add(this.tabPage3);
             this.xuiFlatTab1.HeaderBackgroundColor = System.Drawing.Color.White;
             this.xuiFlatTab1.InActiveHeaderColor = System.Drawing.Color.RoyalBlue;
             this.xuiFlatTab1.InActiveTextColor = System.Drawing.Color.White;
             this.xuiFlatTab1.ItemSize = new System.Drawing.Size(240, 16);
-            this.xuiFlatTab1.Location = new System.Drawing.Point(254, 12);
+            this.xuiFlatTab1.Location = new System.Drawing.Point(12, 12);
             this.xuiFlatTab1.Name = "xuiFlatTab1";
             this.xuiFlatTab1.PageColor = System.Drawing.Color.White;
             this.xuiFlatTab1.SelectedIndex = 0;
             this.xuiFlatTab1.ShowBorder = true;
             this.xuiFlatTab1.Size = new System.Drawing.Size(515, 412);
             this.xuiFlatTab1.TabIndex = 0;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.White;
-            this.tabPage2.Location = new System.Drawing.Point(4, 20);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(507, 388);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
             // 
             // tabPage3
             // 
@@ -80,6 +69,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.xuiFlatTab1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
@@ -91,7 +81,6 @@
         #endregion
 
         private XanderUI.XUIFlatTab xuiFlatTab1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
     }
 }

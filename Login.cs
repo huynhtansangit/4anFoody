@@ -31,14 +31,31 @@ namespace Viva_vegan
             }
         }
 
+        private Boolean kiemTraDangNhap()
+        {
+            String name = txtusername.Text;
+            String pass = txtpassword.Text;
+
+            if (String.IsNullOrWhiteSpace(name) | String.IsNullOrWhiteSpace(pass))
+            {
+                MessageBox.Show("Vui lòng không bỏ trống", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            else
+            {
+                // kiểm tra db rồi cấp phép login.
+                return true;
+            }
+        }
+
         private void Btndangnhap_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Test");
-        }
-
-        public void dangnhap()
-        {
-            // handle login process
+            if (kiemTraDangNhap())
+            {
+                this.Hide();
+                new Dashboard().Show();
+            }
         }
 
         private void LblChuyensangdky_MouseHover(object sender, EventArgs e)
@@ -61,7 +78,7 @@ namespace Viva_vegan
 
         private void LblChuyensangdky_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             new Register().Show();
         }
     }
