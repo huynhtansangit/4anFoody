@@ -1,0 +1,22 @@
+﻿Luồng ứng dụng
+	1. Đăng nhập để vào bảng điều khiển
+	2. Đăng ký nếu chưa có tài khoản.
+Trong bảng điều khiển (Dashboard):
+	1. Bảng điều khiển :
+		a.	Thêm xóa sửa thông tin nhân viên ... cập nhật thêm chức năng
+			(Chỉ tài khoản phân quyền admin mới có thể thực thi)
+		b.	Biểu đồ doanh thu: Doanh thu ngày -> tuần -> tháng. Cập nhật sau 00:00
+			Danh sách 5 món bestseller và worstseller của tuần để phát triển và cải thiện.
+			5 Nhân viên doanh số cao nhất tuần.
+		c.	Gọi món Danh sách các món ăn và thức uống, chọn bàn trống 
+				-> chọn món 
+				-> chọn số lượng 
+				-> submit và in hóa đơn tạm tính.
+		d.	Hoạt động gần đây:
+			Hiện tại: Lưu lại lịch sử thêm, sửa, xóa cập nhật thông tin nhân viên.
+			Tương lai: Lưu lại các khoản chi tiêu của nhà hàng và lịch sử nhập kho.
+		e. Thanh toán: Chọn bàn và thanh toán
+		f. Thông tin của thôi: Xem sửa thông tin cá nhân
+File .README chứa thông tin giải thích chi tiết ứng dụng. 
+
+"Bất kỳ thêm, sửa hay xóa nội dung file README đề phải ghi rõ ngày tháng và thời gian."

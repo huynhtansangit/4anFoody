@@ -1,0 +1,159 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using FontAwesome.Sharp;
+using MetroFramework.Forms;
+namespace Viva_vegan
+{
+    public partial class Dashboard : MetroFramework.Forms.MetroForm
+    {
+        //Fields
+        private IconButton currentButton;
+        // line active button
+        private Panel leftBorderBtn;
+        public Dashboard()
+        {
+            InitializeComponent();
+            lblDate.Text = DateTime.Now.ToLongDateString();
+            StartTimer();
+            leftBorderBtn = new Panel();
+            leftBorderBtn.Size = new Size(4, 46);
+            pnNavi.Controls.Add(leftBorderBtn);
+        }
+        //Structs
+        private struct RGBColors
+        {
+            public static Color color1 = Color.FromArgb(252, 68, 68);
+            public static Color color2 = Color.FromArgb(249, 118, 176);
+            public static Color color3 = Color.FromArgb(253, 138, 114);
+            public static Color color4 = Color.FromArgb(95, 77, 221);
+            public static Color color5 = Color.FromArgb(249, 88, 155);
+            public static Color color6 = Color.FromArgb(24, 161, 251);
+        }
+        //Methods
+        private void activeButton (object sender, Color color)
+        {
+            disableButton();
+            if (sender!=null)
+            {
+                currentButton = (IconButton)sender;
+                currentButton.BackColor = Color.FromArgb(141, 228, 175);
+                currentButton.ForeColor = color;
+                currentButton.TextAlign = ContentAlignment.MiddleCenter;
+                currentButton.IconColor = color;
+                currentButton.TextImageRelation = TextImageRelation.TextBeforeImage;
+                currentButton.ImageAlign = ContentAlignment.MiddleRight;
+                //left border panel
+                leftBorderBtn.BackColor = color;
+                leftBorderBtn.Location = new Point(0, currentButton.Location.Y);
+                leftBorderBtn.Visible = true;
+                leftBorderBtn.BringToFront();
+                //icon and label form hiện tại
+                iconFormhientai.IconChar = currentButton.IconChar;
+                iconFormhientai.IconColor = color;
+                lbltenformhientai.Text = currentButton.Text;
+                lbltenformhientai.ForeColor = color;
+            }
+        }
+        private void disableButton ()
+        {
+            if(currentButton!=null)
+            {
+                currentButton.BackColor = Color.FromArgb(142, 228, 175);
+                currentButton.ForeColor = Color.FromArgb(5, 56, 107);
+                currentButton.TextAlign = ContentAlignment.MiddleLeft;
+                currentButton.IconColor = Color.FromArgb(5, 56, 107);
+                currentButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+                currentButton.ImageAlign = ContentAlignment.MiddleLeft;
+            }
+        }
+        System.Windows.Forms.Timer t = null;
+        private void StartTimer()
+        {
+            t = new System.Windows.Forms.Timer();
+            t.Interval = 1000;
+            t.Tick += new EventHandler(t_Tick);
+            t.Enabled = true;
+        }
+
+        void t_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString();
+        }
+
+        private void Btnbangdieukhien_Click(object sender, EventArgs e)
+        {
+            activeButton(sender, RGBColors.color1);
+        }
+
+        private void Btnbieudo_Click(object sender, EventArgs e)
+        {
+            activeButton(sender, RGBColors.color2);
+        }
+
+        private void Btngoimon_Click(object sender, EventArgs e)
+        {
+            activeButton(sender, RGBColors.color3);
+        }
+
+        private void Btnhoatdong_Click(object sender, EventArgs e)
+        {
+            activeButton(sender, RGBColors.color4);
+        }
+
+        private void Btnthanhtoan_Click(object sender, EventArgs e)
+        {
+            activeButton(sender, RGBColors.color5);
+        }
+
+        private void Btnthongtin_Click(object sender, EventArgs e)
+        {
+            activeButton(sender, RGBColors.color6);
+        }
+
+        private void Btntrangchu_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
+        private void Reset()
+        {
+            disableButton();
+            leftBorderBtn.Visible = false;
+            iconFormhientai.IconChar = IconChar.Home;
+            iconFormhientai.IconColor = Color.FromArgb(6, 56, 108);
+            lbltenformhientai.Text = "Home";
+            lbltenformhientai.ForeColor = Color.FromArgb(6, 56, 108);
+        }
+
+        private void LblTime_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btnfacebook_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.facebook.com/dove.fonghoatuyetnguyet");
+        }
+
+        private void IconButton6_Click_1(object sender, EventArgs e)
+        {
+            String phoneContact = "0868952131";
+            String emailContact = "huynhtansangit1999@gmail.com";
+            String message = String.Format("Số điện thoại: {0}\nEmail: {1}", phoneContact, emailContact);
+            MessageBox.Show(message, "Thông tin liên hệ",
+                                 MessageBoxButtons.OK,
+                                 MessageBoxIcon.Information);
+        }
+
+        private void Btnlogout_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

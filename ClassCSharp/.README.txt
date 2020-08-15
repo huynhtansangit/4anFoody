@@ -1,0 +1,1 @@
+﻿---Tất cả các class không phải là form sẽ được tạo ở đây---
