@@ -34,11 +34,11 @@ namespace Viva_vegan
         private struct RGBColors
         {
             public static Color color1 = Color.FromArgb(252, 68, 68);
-            public static Color color2 = Color.FromArgb(249, 118, 176);
-            public static Color color3 = Color.FromArgb(253, 138, 114);
-            public static Color color4 = Color.FromArgb(95, 77, 221);
-            public static Color color5 = Color.FromArgb(249, 88, 155);
-            public static Color color6 = Color.FromArgb(24, 161, 251);
+            public static Color color2 = Color.FromArgb(252, 68, 68);
+            public static Color color3 = Color.FromArgb(252, 68, 68);
+            public static Color color4 = Color.FromArgb(252, 68, 68);
+            public static Color color5 = Color.FromArgb(252, 68, 68);
+            public static Color color6 = Color.FromArgb(252, 68, 68);
         }
         //Methods
         private void openChildForm (Form childForm)
@@ -64,7 +64,7 @@ namespace Viva_vegan
             if (sender!=null)
             {
                 currentButton = (IconButton)sender;
-                currentButton.BackColor = Color.FromArgb(141, 228, 175);
+                currentButton.BackColor = Color.WhiteSmoke;
                 currentButton.ForeColor = color;
                 currentButton.TextAlign = ContentAlignment.MiddleCenter;
                 currentButton.IconColor = color;
@@ -77,16 +77,16 @@ namespace Viva_vegan
                 leftBorderBtn.BringToFront();
                 //icon and label form hiện tại
                 iconFormhientai.IconChar = currentButton.IconChar;
-                iconFormhientai.IconColor = color;
+                iconFormhientai.IconColor = Color.White;
                 lbltenformhientai.Text = currentButton.Text;
-                lbltenformhientai.ForeColor = color;
+                lbltenformhientai.ForeColor = Color.FromArgb(6, 56, 108); ;
             }
         }
         private void disableButton ()
         {
             if(currentButton!=null)
             {
-                currentButton.BackColor = Color.FromArgb(142, 228, 175);
+                currentButton.BackColor = Color.White;
                 currentButton.ForeColor = Color.FromArgb(5, 56, 107);
                 currentButton.TextAlign = ContentAlignment.MiddleLeft;
                 currentButton.IconColor = Color.FromArgb(5, 56, 107);
