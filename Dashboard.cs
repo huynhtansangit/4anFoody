@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
 using MetroFramework.Forms;
-
 namespace Viva_vegan
 
 {
@@ -19,6 +18,7 @@ namespace Viva_vegan
         private IconButton currentButton;
         // line active button
         private Panel leftBorderBtn;
+        FormDashboard.BangDieuKhien dashBoard;
         //form con 
         private Form currentChildForm;
         public Dashboard()
@@ -29,6 +29,18 @@ namespace Viva_vegan
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(4, 46);
             pnNavi.Controls.Add(leftBorderBtn);
+            setTenNhanVien();
+
+        }
+        //ClassCSharp.User.Ngayvaolam.ToString("dd/MM/yyyy")
+        private void setTenNhanVien ()
+        {
+            lblchao.Text = "Hello, " +
+                ClassCSharp.User.Tennv;
+        }
+        private void minimizeDashboard(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
         //Structs
         private struct RGBColors
@@ -57,7 +69,6 @@ namespace Viva_vegan
             childForm.BringToFront();
             childForm.Show();
         }
-
         private void activeButton (object sender, Color color)
         {
             disableButton();
@@ -111,7 +122,12 @@ namespace Viva_vegan
         private void Btnbangdieukhien_Click(object sender, EventArgs e)
         {
             activeButton(sender, RGBColors.color1);
-            openChildForm(new FormDashboard.BangDieuKhien());
+            dashBoard = new FormDashboard.BangDieuKhien();
+            dashBoard.ReclickRequest += minimizeDashboard;
+            openChildForm(dashBoard);
+            // kiểm tra nếu tài khoản là admin mới được truy cập bảng điều khiển
+            // không thì disabled
+            //dashBoard.Enabled = false;
         }
 
         private void Btnbieudo_Click(object sender, EventArgs e)
@@ -195,5 +211,11 @@ namespace Viva_vegan
         {
             Application.Exit();
         }
+
+        private void Btntwitter_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://4anvegetarian.vn");
+        }
+        
     }
 }

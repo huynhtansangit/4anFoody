@@ -75,7 +75,7 @@
             this.pnNavi.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnNavi.Location = new System.Drawing.Point(0, 60);
             this.pnNavi.Name = "pnNavi";
-            this.pnNavi.Size = new System.Drawing.Size(252, 568);
+            this.pnNavi.Size = new System.Drawing.Size(252, 578);
             this.pnNavi.TabIndex = 0;
             // 
             // btnthongtin
@@ -258,7 +258,7 @@
             this.pndesktop.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pndesktop.Location = new System.Drawing.Point(252, 60);
             this.pndesktop.Name = "pndesktop";
-            this.pndesktop.Size = new System.Drawing.Size(799, 568);
+            this.pndesktop.Size = new System.Drawing.Size(799, 578);
             this.pndesktop.TabIndex = 1;
             // 
             // pnTop
@@ -326,9 +326,11 @@
             this.lblchao.AutoSize = true;
             this.lblchao.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblchao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(56)))), ((int)(((byte)(108)))));
-            this.lblchao.Location = new System.Drawing.Point(450, 21);
+            this.lblchao.Location = new System.Drawing.Point(102, 24);
+            this.lblchao.Margin = new System.Windows.Forms.Padding(3, 0, 10, 0);
             this.lblchao.Name = "lblchao";
-            this.lblchao.Size = new System.Drawing.Size(159, 18);
+            this.lblchao.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.lblchao.Size = new System.Drawing.Size(169, 18);
             this.lblchao.TabIndex = 14;
             this.lblchao.Text = "Hello, Tên nhân viên!";
             // 
@@ -376,7 +378,7 @@
             this.btntwitter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btntwitter.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btntwitter.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btntwitter.IconChar = FontAwesome.Sharp.IconChar.Twitter;
+            this.btntwitter.IconChar = FontAwesome.Sharp.IconChar.Page4;
             this.btntwitter.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(56)))), ((int)(((byte)(108)))));
             this.btntwitter.IconSize = 20;
             this.btntwitter.Location = new System.Drawing.Point(663, 18);
@@ -385,6 +387,7 @@
             this.btntwitter.Size = new System.Drawing.Size(24, 24);
             this.btntwitter.TabIndex = 11;
             this.btntwitter.UseVisualStyleBackColor = true;
+            this.btntwitter.Click += new System.EventHandler(this.Btntwitter_Click);
             // 
             // btnfacebook
             // 
@@ -412,7 +415,7 @@
             this.lblTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTime.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTime.Location = new System.Drawing.Point(379, 535);
+            this.lblTime.Location = new System.Drawing.Point(379, 545);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(78, 20);
             this.lblTime.TabIndex = 11;
@@ -428,7 +431,7 @@
             this.lblDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblDate.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblDate.Location = new System.Drawing.Point(379, 506);
+            this.lblDate.Location = new System.Drawing.Point(379, 516);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(78, 20);
             this.lblDate.TabIndex = 10;
@@ -443,7 +446,7 @@
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label4.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(215, 302);
+            this.label4.Location = new System.Drawing.Point(215, 312);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(216, 31);
             this.label4.TabIndex = 7;
@@ -458,7 +461,7 @@
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Cooper Black", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(189, 255);
+            this.label3.Location = new System.Drawing.Point(189, 265);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(268, 36);
             this.label3.TabIndex = 6;
@@ -473,7 +476,7 @@
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Cooper Black", 30F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(161, 198);
+            this.label2.Location = new System.Drawing.Point(161, 208);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(324, 46);
             this.label2.TabIndex = 5;
@@ -485,7 +488,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox1.BackgroundImage = global::Viva_vegan.Properties.Resources.banner_dashboard1;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 111);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 121);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(380, 634);
             this.pictureBox1.TabIndex = 0;
@@ -495,7 +498,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1051, 648);
+            this.ClientSize = new System.Drawing.Size(1051, 658);
             this.Controls.Add(this.pndesktop);
             this.Controls.Add(this.pnNavi);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

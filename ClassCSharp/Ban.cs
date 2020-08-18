@@ -8,5 +8,6 @@ namespace Viva_vegan.ClassCSharp
 {
     class Ban
     {
+
     }
 }

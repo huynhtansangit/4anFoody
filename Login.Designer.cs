@@ -63,7 +63,7 @@
             this.pnBannerLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnBannerLeft.Location = new System.Drawing.Point(0, 0);
             this.pnBannerLeft.Name = "pnBannerLeft";
-            this.pnBannerLeft.Size = new System.Drawing.Size(383, 485);
+            this.pnBannerLeft.Size = new System.Drawing.Size(360, 485);
             this.pnBannerLeft.TabIndex = 0;
             // 
             // pnline1
@@ -85,7 +85,7 @@
             this.label3.Font = new System.Drawing.Font("Minion Pro", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(7, 432);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(153, 40);
+            this.label3.Size = new System.Drawing.Size(154, 44);
             this.label3.TabIndex = 3;
             this.label3.Text = "Change What You Eat\r\nChange The World.";
             // 
@@ -126,7 +126,7 @@
             this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(87, 53);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(296, 420);
+            this.pictureBox1.Size = new System.Drawing.Size(290, 420);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -135,9 +135,9 @@
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.pbLogo_login);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(383, 0);
+            this.panel1.Location = new System.Drawing.Point(360, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(302, 126);
+            this.panel1.Size = new System.Drawing.Size(325, 126);
             this.panel1.TabIndex = 1;
             // 
             // pbLogo_login
@@ -171,9 +171,9 @@
             this.panel2.Controls.Add(this.txtusername);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Font = new System.Drawing.Font("Minion Pro", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(383, 107);
+            this.panel2.Location = new System.Drawing.Point(360, 107);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(302, 378);
+            this.panel2.Size = new System.Drawing.Size(325, 378);
             this.panel2.TabIndex = 2;
             // 
             // btndangnhap
@@ -222,7 +222,7 @@
             this.lblChuyensangdky.Font = new System.Drawing.Font("Minion Pro", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChuyensangdky.Location = new System.Drawing.Point(75, 256);
             this.lblChuyensangdky.Name = "lblChuyensangdky";
-            this.lblChuyensangdky.Size = new System.Drawing.Size(149, 20);
+            this.lblChuyensangdky.Size = new System.Drawing.Size(150, 22);
             this.lblChuyensangdky.TabIndex = 10;
             this.lblChuyensangdky.Text = "Tôi chưa có tài khoản";
             this.lblChuyensangdky.Click += new System.EventHandler(this.LblChuyensangdky_Click);

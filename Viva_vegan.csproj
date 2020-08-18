@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassCSharp\Ban.cs" />
+    <Compile Include="ClassCSharp\ConnectDataBase.cs" />
     <Compile Include="ClassCSharp\MonAn.cs" />
     <Compile Include="ClassCSharp\ThucUong.cs" />
     <Compile Include="ClassCSharp\User.cs" />

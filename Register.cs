@@ -16,5 +16,15 @@ namespace Viva_vegan
         {
             InitializeComponent();
         }
+
+        private void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btntrolai_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
     }
 }
