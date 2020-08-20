@@ -8,25 +8,117 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+using System.Data.SqlClient;
 
 namespace Viva_vegan.FormDashboard
 {
     public partial class BangDieuKhien : Form
     {
+        // Khai báo
+        private List<ClassCSharp.KhuVuc> listKhuvuc = new List<ClassCSharp.KhuVuc>();
+        private List<ClassCSharp.ChucVu> listChucvu = new List<ClassCSharp.ChucVu>();
+        private List<ClassCSharp.BoPhan> listBophan = new List<ClassCSharp.BoPhan>();
+        private ClassCSharp.ConnectDataBase conn;
+        // Hết khai báo
+
         public BangDieuKhien()
         {
             InitializeComponent();
+            conn = new ClassCSharp.ConnectDataBase("");
+            // tab bàn
+            loadKhuvuc();
+            loadBan();
+            //tab nhân viên
+            loadNhanVien("");
+            loadMachucvu();
+            loadMabophan();
+            // tab món ăn
+            loadMonan("");
+            //tab đồ uống
+        }
+
+        private void loadMonan(String input)
+        {
+            if (conn.getConnection() != null && conn.getConnection().State == ConnectionState.Closed)
+            {
+                conn.openDB();
+            }
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                String query = "select * from monan";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn.getConnection());
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                dgvmonan.DataSource = table;
+                conn.closeDB();
+            }
+            else
+            {
+                String query = "";
+                if (cbbtimtheomonan.Text.Contains("Tên"))
+                {
+                    query = "select * from monan where tenmon=N'" +
+                    input.Trim() + "'";
+                }
+                else if (cbbtimtheomonan.Text.Contains("Mã"))
+                {
+                    query = "select * from monan where mamon='" +
+                    input.Trim() + "'";
+                }
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn.getConnection());
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                dgvmonan.DataSource = table;
+                conn.closeDB();
+            }
+        }
+
+        private void loadMabophan()
+        {
+            cbbmabp.Items.Clear();
+            String query = "select * from bophan";
+            if (conn.getConnection() != null && conn.getConnection().State == ConnectionState.Closed)
+            {
+                conn.openDB();
+            }
+            SqlCommand cmd = new SqlCommand(query, conn.getConnection());
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                listBophan.Add(new ClassCSharp.BoPhan(reader["mabp"].ToString(), reader["tenbp"].ToString()));
+                cbbmabp.Items.Add(reader["mabp"].ToString());
+            }
+            cbbmabp.Text = "Chọn mã bộ phận";
+            conn.closeDB();
+        }
+
+        private void loadMachucvu()
+        {
+            cbbmacv.Items.Clear();
+            String query = "select * from chucvu";
+            if (conn.getConnection() != null && conn.getConnection().State == ConnectionState.Closed)
+            {
+                conn.openDB();
+            }
+            SqlCommand cmd = new SqlCommand(query, conn.getConnection());
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                listChucvu.Add(new ClassCSharp.ChucVu(reader["macv"].ToString(), reader["tencv"].ToString()));
+                cbbmacv.Items.Add(reader["macv"].ToString());
+            }
+            cbbmacv.Text = "Chọn mã chức vụ";
+            conn.closeDB();
         }
 
         private void Btnthemnhanvien_Click(object sender, EventArgs e)
         {
-            saveHistory();
+            saveHistory("them");
         }
-        private void saveHistory()
+        private void saveHistory(String yeucau)
         {
-            String mabp = cbbmabp.SelectedItem.ToString();
-            String macv = cbbmacv.SelectedItem.ToString();
+            String mabp = cbbmabp.Text;
+            String macv = cbbmacv.Text;
             String ten = txttennv.Text;
             String sdt = txtsodt.Text;
             String email = txtemail.Text;
@@ -35,8 +127,55 @@ namespace Viva_vegan.FormDashboard
             String tendangnhap = txttendangnhap.Text;
             String matkhau = txtmatkhau.Text;
             String ngaythem = DateTime.Now.ToLongDateString();
-            String[] mangNhanvien = { macv, mabp, ten, sdt, email, diachi, sotk, tendangnhap, matkhau , ngaythem };
-            String content = String.Format("{0}/{1}/{2}/{3}/{4}/{5}/{6}/{7}{8} - {9}", mangNhanvien);
+            String[] mangNhanvien = { macv.Trim(),
+                mabp.Trim(),
+                ten.Trim(), sdt.Trim(),
+                email.Trim(),
+                diachi.Trim(),
+                sotk.Trim(),
+                tendangnhap.Trim(),
+                matkhau.Trim(),
+                ngaythem.Trim() };
+            String content = "";
+            if (yeucau.Contains("them"))
+            {
+                content = String.Format(ClassCSharp.User.Manv + " đã thêm:"+
+                    "{0}/{1}/{2}/{3}/{4}/{5}/{6}/{7}{8}-{9}"
+                    , mangNhanvien);
+            }
+            else if(yeucau.Contains("sua"))
+            {
+                DataGridViewRow row = dgvnhanvien.Rows[dgvnhanvien.CurrentCell.RowIndex];
+                String [] dataSua = {
+                row.Cells["macv"].Value.ToString(),macv,
+                row.Cells["mabp"].Value.ToString(),mabp,
+                row.Cells["tennv"].Value.ToString(),ten,
+                row.Cells["emailnv"].Value.ToString(),email,
+                row.Cells["diachinv"].Value.ToString(),diachi,
+                row.Cells["sotaikhoannv"].Value.ToString(),sotk,
+                row.Cells["tendangnhap"].Value.ToString(),tendangnhap,
+                row.Cells["matkhau"].Value.ToString(),matkhau,
+                row.Cells["dienthoainv"].Value.ToString(),sdt,
+                ngaythem
+                };
+                content = String.Format(ClassCSharp.User.Manv + " đã sửa: " +
+                    "\n\t{0} -> {1}" +
+                    "\n\t{2} -> {3}" +
+                    "\n\t{4} -> {5}" +
+                    "\n\t{6} -> {7}" +
+                    "\n\t{8} -> {9}" +
+                    "\n\t{10} -> {11}" +
+                    "\n\t{12} -> {13}" +
+                    "\n\t{14} -> {15}" +
+                    "\n\t{16} -> {17}-{18}"
+                    , dataSua);
+            }
+            else if (yeucau.Contains("xoa"))
+            {
+                content = String.Format(ClassCSharp.User.Manv + " đã xóa: " +
+                    "{0}/{1}/{2}/{3}/{4}/{5}/{6}/{7}{8}-{9}"
+                    , mangNhanvien);
+            }
             //System.IO.File.WriteLine(@"C:\Users\Public\TestFolder\WriteText.txt", text);
             using (StreamWriter sw = new StreamWriter(File.Open(@".\Staff_history.txt", FileMode.Append), Encoding.Unicode))
             {
@@ -78,6 +217,290 @@ namespace Viva_vegan.FormDashboard
             }
             catch (Exception) {
                 MessageBox.Show("Error");
+            }
+        }
+
+        private void loadKhuvuc ()
+        {
+            cbbkhuvuc.Items.Clear();
+            String query = "select * from khuvuc";
+            if (conn.getConnection() != null && conn.getConnection().State == ConnectionState.Closed)
+            {
+                conn.openDB();
+            }
+            SqlCommand cmd = new SqlCommand(query, conn.getConnection());
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                listKhuvuc.Add(new ClassCSharp.KhuVuc(reader["makhuvuc"].ToString(), reader["tenkhuvuc"].ToString()));
+                cbbkhuvuc.Items.Add(reader["makhuvuc"].ToString());
+            }
+            cbbkhuvuc.Text = "Chọn khu vực";
+            conn.closeDB();
+        }
+        private void loadBan ()
+        {
+            
+            String query = "select * from ban";
+            if (conn.getConnection() != null && conn.getConnection().State == ConnectionState.Closed)
+            {
+                conn.openDB();
+            }
+            SqlDataAdapter adapter = new SqlDataAdapter(query, conn.getConnection());
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            dgvban.DataSource = table;
+            conn.closeDB();
+        }
+
+        private void Dgvban_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex!=-1)
+            {
+                DataGridViewRow row = dgvban.Rows[e.RowIndex];
+                txtmaban.Text = row.Cells["soban"].Value.ToString();
+                txttenban.Text= row.Cells["tenban"].Value.ToString();
+                cbbkhuvuc.Text= row.Cells["makhuvuc"].Value.ToString();
+            }
+        }
+
+        private void Btnclear_Click(object sender, EventArgs e)
+        {
+            txtmaban.Text = "";
+            txttenban.Text = "";
+            cbbkhuvuc.Text = "";
+        }
+
+        private void Btnthem_Click(object sender, EventArgs e)
+        {
+            // code sau
+        }
+        private void loadNhanVien (String input)
+        {
+            if (conn.getConnection() != null && conn.getConnection().State == ConnectionState.Closed)
+            {
+                conn.openDB();
+            }
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                String query = "select * from nhanvien";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn.getConnection());
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                dgvnhanvien.DataSource = table;
+                conn.closeDB();
+            }
+            else
+            {
+                String query = "";
+                if (cbbtimtheonhanvien.Text.Contains("Tên"))
+                {
+                    query = "select * from nhanvien where tennv=N'" +
+                    input.Trim() + "'";
+                }
+                else if (cbbtimtheonhanvien.Text.Contains("Mã"))
+                {
+                    query = "select * from nhanvien where manv='" +
+                    input.Trim() + "'";
+                }
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn.getConnection());
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                dgvnhanvien.DataSource = table;
+                conn.closeDB();
+            }
+        }
+
+        private void Txttimkiemnhanvien_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btntimnhanvien.PerformClick();
+            }
+        }
+
+        private void Btntimnhanvien_Click(object sender, EventArgs e)
+        {
+            String tieuchi = cbbtimtheonhanvien.Text;
+            String inputTim = txttimkiemnhanvien.Text;
+            if (String.IsNullOrWhiteSpace(tieuchi) )
+            {
+                MessageBox.Show("Vui lòng chọn tiêu chí tìm kiếm");
+            }
+            else
+            {
+                if (tieuchi.Contains("Tất cả"))
+                {
+                    loadNhanVien("");
+                }
+                else
+                {
+                    if (!String.IsNullOrWhiteSpace(inputTim))
+                    {
+                        loadNhanVien(inputTim);
+                    }
+                }
+            }
+        }
+        private String taoManv ()
+        {
+            if (conn.getConnection() != null && conn.getConnection().State == ConnectionState.Closed)
+            {
+                conn.openDB();
+            }
+            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM nhanvien", conn.getConnection());
+            Int32 count = (Int32)cmd.ExecuteScalar()+1;
+            return "NV" + Convert.ToString(count);
+        }
+        private void Dgvnhanvien_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                DataGridViewRow row = dgvnhanvien.Rows[e.RowIndex];
+                cbbmacv.Text = row.Cells["macv"].Value.ToString();
+                cbbmabp.Text = row.Cells["mabp"].Value.ToString();
+                txttennv.Text = row.Cells["tennv"].Value.ToString();
+                txtemail.Text = row.Cells["emailnv"].Value.ToString();
+                txtdiachi.Text = row.Cells["diachinv"].Value.ToString();
+                txtsotk.Text = row.Cells["sotaikhoannv"].Value.ToString();
+                txttendangnhap.Text = row.Cells["tendangnhap"].Value.ToString();
+                txtmatkhau.Text = row.Cells["matkhau"].Value.ToString();
+                txtsodt.Text = row.Cells["dienthoainv"].Value.ToString();
+            }
+        }
+
+        private void IconButton1_Click(object sender, EventArgs e)  /// button xoa nhan vien
+        {
+            saveHistory("xoa");
+        }
+
+        private void Btnsuanhanvien_Click(object sender, EventArgs e)
+        {
+            saveHistory("sua");
+        }
+
+        private void Btncleartextnhanvien_Click(object sender, EventArgs e)
+        {
+            cbbmacv.Text = "";
+            cbbmabp.Text = "";
+            txttennv.Text = "";
+            txtemail.Text = "";
+            txtdiachi.Text = "";
+            txtsotk.Text = "";
+            txttendangnhap.Text="";
+            txtmatkhau.Text = "";
+            txtsodt.Text = "";
+        }
+
+        private void Txttimmonan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btntimmonan.PerformClick();
+            }
+        }
+
+        private void Btntimmonan_Click(object sender, EventArgs e)
+        {
+            String tieuchi = cbbtimtheomonan.Text;
+            String inputTim = txttimmonan.Text;
+            if (String.IsNullOrWhiteSpace(tieuchi))
+            {
+                MessageBox.Show("Vui lòng chọn tiêu chí tìm kiếm");
+            }
+            else
+            {
+                if (tieuchi.Contains("Tất cả"))
+                {
+                    loadMonan("");
+                }
+                else
+                {
+                    if (!String.IsNullOrWhiteSpace(inputTim))
+                    {
+                        loadMonan(inputTim);
+                    }
+                }
+            }
+        }
+
+        private void Dgvmonan_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                imgboxxemtruoc.Image = null;
+                DataGridViewRow row = dgvmonan.Rows[e.RowIndex];
+                txtmamon.Text = row.Cells["mamon"].Value.ToString();
+                txttenmon.Text = row.Cells["tenmon"].Value.ToString();
+                txtgiaban.Text = row.Cells["giaban"].Value.ToString();
+                rtbmota.Text = row.Cells["mota"].Value.ToString();
+                cbbdvt.Text = row.Cells["dvt"].Value.ToString();
+                if (!String.IsNullOrWhiteSpace( row.Cells["hinh"].Value.ToString()))
+                {
+                    Byte[] data = new Byte[0];
+                    data = (Byte[])(row.Cells["hinh"].Value);
+                    MemoryStream mem = new MemoryStream(data);
+                    imgboxxemtruoc.Image = Image.FromStream(mem);
+                }
+            }
+        }
+        // Chỉ cho giá bán nhập số
+        private void txtGiaban_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+        private void Btnsuamon_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace( lblpath.Text))
+            {
+                byte[] images = null;
+                FileStream stream = new FileStream(lblpath.Text, FileMode.Open, FileAccess.Read);
+                BinaryReader binaryReader = new BinaryReader(stream);
+                images = binaryReader.ReadBytes((int)stream.Length);
+
+                String mamon = txtmamon.Text;
+                String tenmon = txttenmon.Text;
+                String giaban = txtgiaban.Text;
+                String mota = rtbmota.Text;
+                String dvt = cbbdvt.Text;
+                if (String.IsNullOrWhiteSpace(mamon)
+                    | String.IsNullOrWhiteSpace(tenmon)
+                    | String.IsNullOrWhiteSpace(dvt)
+                    | String.IsNullOrWhiteSpace(giaban))
+                {
+                    MessageBox.Show("Vui không bỏ trống những trường có (*) ");
+                }
+                else
+                {
+                    int IntGiaban = Convert.ToInt32(giaban);
+                    if (conn.getConnection() != null && conn.getConnection().State == ConnectionState.Closed)
+                    {
+                        conn.openDB();
+                    }
+                    SqlCommand cmd = new SqlCommand("themmonan", conn.getConnection());
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@MAMON", mamon.Trim());
+                    cmd.Parameters.AddWithValue("@tenmon", tenmon.Trim());
+                    cmd.Parameters.AddWithValue("@giaban", IntGiaban);
+                    cmd.Parameters.AddWithValue("@mota", mota.Trim());
+                    cmd.Parameters.AddWithValue("@dvt", dvt.Trim());
+                    cmd.Parameters.AddWithValue("@hinh", images);
+                    cmd.Parameters.AddWithValue("@request", "update");
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Hoàn tất", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    conn.closeDB();
+                    loadMonan("");
+                }
             }
         }
     }

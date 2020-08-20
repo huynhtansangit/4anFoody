@@ -258,7 +258,7 @@
             this.pndesktop.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pndesktop.Location = new System.Drawing.Point(252, 60);
             this.pndesktop.Name = "pndesktop";
-            this.pndesktop.Size = new System.Drawing.Size(799, 578);
+            this.pndesktop.Size = new System.Drawing.Size(948, 578);
             this.pndesktop.TabIndex = 1;
             // 
             // pnTop
@@ -275,7 +275,7 @@
             this.pnTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnTop.Location = new System.Drawing.Point(0, 0);
             this.pnTop.Name = "pnTop";
-            this.pnTop.Size = new System.Drawing.Size(799, 67);
+            this.pnTop.Size = new System.Drawing.Size(948, 56);
             this.pnTop.TabIndex = 12;
             // 
             // btnlogout
@@ -288,7 +288,7 @@
             this.btnlogout.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
             this.btnlogout.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(56)))), ((int)(((byte)(108)))));
             this.btnlogout.IconSize = 20;
-            this.btnlogout.Location = new System.Drawing.Point(615, 18);
+            this.btnlogout.Location = new System.Drawing.Point(764, 13);
             this.btnlogout.Name = "btnlogout";
             this.btnlogout.Rotation = 0D;
             this.btnlogout.Size = new System.Drawing.Size(24, 24);
@@ -301,7 +301,7 @@
             this.lbltenformhientai.AutoSize = true;
             this.lbltenformhientai.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltenformhientai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(56)))), ((int)(((byte)(108)))));
-            this.lbltenformhientai.Location = new System.Drawing.Point(44, 24);
+            this.lbltenformhientai.Location = new System.Drawing.Point(44, 19);
             this.lbltenformhientai.Name = "lbltenformhientai";
             this.lbltenformhientai.Size = new System.Drawing.Size(52, 18);
             this.lbltenformhientai.TabIndex = 17;
@@ -314,7 +314,7 @@
             this.iconFormhientai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(56)))), ((int)(((byte)(108)))));
             this.iconFormhientai.IconChar = FontAwesome.Sharp.IconChar.Home;
             this.iconFormhientai.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(56)))), ((int)(((byte)(108)))));
-            this.iconFormhientai.Location = new System.Drawing.Point(6, 17);
+            this.iconFormhientai.Location = new System.Drawing.Point(6, 12);
             this.iconFormhientai.Name = "iconFormhientai";
             this.iconFormhientai.Size = new System.Drawing.Size(32, 32);
             this.iconFormhientai.TabIndex = 16;
@@ -326,7 +326,7 @@
             this.lblchao.AutoSize = true;
             this.lblchao.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblchao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(56)))), ((int)(((byte)(108)))));
-            this.lblchao.Location = new System.Drawing.Point(102, 24);
+            this.lblchao.Location = new System.Drawing.Point(251, 19);
             this.lblchao.Margin = new System.Windows.Forms.Padding(3, 0, 10, 0);
             this.lblchao.Name = "lblchao";
             this.lblchao.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
@@ -344,7 +344,7 @@
             this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.None;
             this.iconButton6.IconColor = System.Drawing.Color.Black;
             this.iconButton6.IconSize = 16;
-            this.iconButton6.Location = new System.Drawing.Point(714, 19);
+            this.iconButton6.Location = new System.Drawing.Point(863, 14);
             this.iconButton6.Name = "iconButton6";
             this.iconButton6.Rotation = 0D;
             this.iconButton6.Size = new System.Drawing.Size(83, 23);
@@ -364,7 +364,7 @@
             this.btninsta.IconChar = FontAwesome.Sharp.IconChar.Instagram;
             this.btninsta.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(56)))), ((int)(((byte)(108)))));
             this.btninsta.IconSize = 20;
-            this.btninsta.Location = new System.Drawing.Point(687, 18);
+            this.btninsta.Location = new System.Drawing.Point(836, 13);
             this.btninsta.Name = "btninsta";
             this.btninsta.Rotation = 0D;
             this.btninsta.Size = new System.Drawing.Size(24, 24);
@@ -381,7 +381,7 @@
             this.btntwitter.IconChar = FontAwesome.Sharp.IconChar.Page4;
             this.btntwitter.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(56)))), ((int)(((byte)(108)))));
             this.btntwitter.IconSize = 20;
-            this.btntwitter.Location = new System.Drawing.Point(663, 18);
+            this.btntwitter.Location = new System.Drawing.Point(812, 13);
             this.btntwitter.Name = "btntwitter";
             this.btntwitter.Rotation = 0D;
             this.btntwitter.Size = new System.Drawing.Size(24, 24);
@@ -399,7 +399,7 @@
             this.btnfacebook.IconChar = FontAwesome.Sharp.IconChar.Facebook;
             this.btnfacebook.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(56)))), ((int)(((byte)(108)))));
             this.btnfacebook.IconSize = 20;
-            this.btnfacebook.Location = new System.Drawing.Point(639, 18);
+            this.btnfacebook.Location = new System.Drawing.Point(788, 13);
             this.btnfacebook.Name = "btnfacebook";
             this.btnfacebook.Rotation = 0D;
             this.btnfacebook.Size = new System.Drawing.Size(24, 24);
@@ -498,7 +498,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1051, 658);
+            this.ClientSize = new System.Drawing.Size(1200, 658);
             this.Controls.Add(this.pndesktop);
             this.Controls.Add(this.pnNavi);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

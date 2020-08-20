@@ -121,13 +121,20 @@ namespace Viva_vegan
 
         private void Btnbangdieukhien_Click(object sender, EventArgs e)
         {
-            activeButton(sender, RGBColors.color1);
-            dashBoard = new FormDashboard.BangDieuKhien();
-            dashBoard.ReclickRequest += minimizeDashboard;
-            openChildForm(dashBoard);
-            // kiểm tra nếu tài khoản là admin mới được truy cập bảng điều khiển
-            // không thì disabled
-            //dashBoard.Enabled = false;
+            if (ClassCSharp.User.Macv !="CVQL")
+            {
+                MessageBox.Show("Xin lỗi! Bạn không có quyền truy cập mục này","Thông báo", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+            else
+            {
+                activeButton(sender, RGBColors.color1);
+                dashBoard = new FormDashboard.BangDieuKhien();
+                dashBoard.ReclickRequest += minimizeDashboard;
+                openChildForm(dashBoard);
+                // kiểm tra nếu tài khoản là admin mới được truy cập bảng điều khiển
+                // không thì disabled
+                //dashBoard.Enabled = false;
+            }
         }
 
         private void Btnbieudo_Click(object sender, EventArgs e)

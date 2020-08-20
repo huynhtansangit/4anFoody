@@ -39,8 +39,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cbbketquatim = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btntrolai = new FontAwesome.Sharp.IconButton();
             this.btndangky = new FontAwesome.Sharp.IconButton();
+            this.btntrolai = new FontAwesome.Sharp.IconButton();
             this.xuiGradientPanel1 = new XanderUI.XUIGradientPanel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -76,6 +76,7 @@
             this.txtnhap.Name = "txtnhap";
             this.txtnhap.Size = new System.Drawing.Size(272, 22);
             this.txtnhap.TabIndex = 2;
+            this.txtnhap.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtnhap_KeyDown);
             // 
             // btntim
             // 
@@ -93,6 +94,7 @@
             this.btntim.TabIndex = 3;
             this.btntim.Text = "Tìm";
             this.btntim.UseVisualStyleBackColor = true;
+            this.btntim.Click += new System.EventHandler(this.Btntim_Click);
             // 
             // label2
             // 
@@ -131,11 +133,13 @@
             // 
             // cbbketquatim
             // 
+            this.cbbketquatim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbketquatim.FormattingEnabled = true;
             this.cbbketquatim.Location = new System.Drawing.Point(374, 96);
             this.cbbketquatim.Name = "cbbketquatim";
             this.cbbketquatim.Size = new System.Drawing.Size(272, 22);
             this.cbbketquatim.TabIndex = 10;
+            this.cbbketquatim.SelectedIndexChanged += new System.EventHandler(this.Cbbketquatim_SelectedIndexChanged);
             // 
             // panel1
             // 
@@ -146,26 +150,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(653, 35);
             this.panel1.TabIndex = 11;
-            // 
-            // btntrolai
-            // 
-            this.btntrolai.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btntrolai.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btntrolai.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btntrolai.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntrolai.IconChar = FontAwesome.Sharp.IconChar.Check;
-            this.btntrolai.IconColor = System.Drawing.Color.Black;
-            this.btntrolai.IconSize = 22;
-            this.btntrolai.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btntrolai.Location = new System.Drawing.Point(0, 0);
-            this.btntrolai.Name = "btntrolai";
-            this.btntrolai.Rotation = 0D;
-            this.btntrolai.Size = new System.Drawing.Size(375, 35);
-            this.btntrolai.TabIndex = 10;
-            this.btntrolai.Text = "Trở lại đăng nhập";
-            this.btntrolai.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btntrolai.UseVisualStyleBackColor = true;
-            this.btntrolai.Click += new System.EventHandler(this.Btntrolai_Click);
             // 
             // btndangky
             // 
@@ -185,6 +169,27 @@
             this.btndangky.Text = "Đăng ký";
             this.btndangky.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btndangky.UseVisualStyleBackColor = true;
+            this.btndangky.Click += new System.EventHandler(this.Btndangky_Click);
+            // 
+            // btntrolai
+            // 
+            this.btntrolai.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btntrolai.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btntrolai.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btntrolai.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntrolai.IconChar = FontAwesome.Sharp.IconChar.Backward;
+            this.btntrolai.IconColor = System.Drawing.Color.Black;
+            this.btntrolai.IconSize = 22;
+            this.btntrolai.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btntrolai.Location = new System.Drawing.Point(0, 0);
+            this.btntrolai.Name = "btntrolai";
+            this.btntrolai.Rotation = 0D;
+            this.btntrolai.Size = new System.Drawing.Size(375, 35);
+            this.btntrolai.TabIndex = 10;
+            this.btntrolai.Text = "Trở lại đăng nhập";
+            this.btntrolai.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btntrolai.UseVisualStyleBackColor = true;
+            this.btntrolai.Click += new System.EventHandler(this.Btntrolai_Click);
             // 
             // xuiGradientPanel1
             // 

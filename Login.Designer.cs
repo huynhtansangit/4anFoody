@@ -152,12 +152,14 @@
             // 
             // txtusername
             // 
-            this.txtusername.Font = new System.Drawing.Font("Minion Pro", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtusername.Font = new System.Drawing.Font("Minion Pro SmBd", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtusername.Location = new System.Drawing.Point(26, 39);
             this.txtusername.Multiline = true;
             this.txtusername.Name = "txtusername";
             this.txtusername.Size = new System.Drawing.Size(264, 25);
             this.txtusername.TabIndex = 2;
+            this.txtusername.Text = "huyql";
+            this.txtusername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel2
             // 
@@ -205,9 +207,9 @@
             this.cbshowpass.CheckboxHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(55)))), ((int)(((byte)(98)))));
             this.cbshowpass.CheckboxStyle = XanderUI.XUICheckBox.Style.Material;
             this.cbshowpass.Checked = false;
-            this.cbshowpass.Font = new System.Drawing.Font("Minion Pro", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbshowpass.Font = new System.Drawing.Font("Minion Pro", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbshowpass.ForeColor = System.Drawing.Color.Black;
-            this.cbshowpass.Location = new System.Drawing.Point(26, 137);
+            this.cbshowpass.Location = new System.Drawing.Point(26, 142);
             this.cbshowpass.Name = "cbshowpass";
             this.cbshowpass.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.cbshowpass.Size = new System.Drawing.Size(136, 19);
@@ -242,13 +244,15 @@
             // 
             // txtpassword
             // 
-            this.txtpassword.Font = new System.Drawing.Font("Minion Pro", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpassword.Font = new System.Drawing.Font("Minion Pro SmBd", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtpassword.Location = new System.Drawing.Point(26, 101);
             this.txtpassword.Multiline = true;
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.PasswordChar = '*';
             this.txtpassword.Size = new System.Drawing.Size(264, 25);
             this.txtpassword.TabIndex = 4;
+            this.txtpassword.Text = "huy123";
+            this.txtpassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 

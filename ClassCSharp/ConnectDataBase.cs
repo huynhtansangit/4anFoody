@@ -32,6 +32,14 @@ namespace Viva_vegan.ClassCSharp
         {
             return this.connection;
         }
+        public void closeDB()
+        {
+            this.connection.Close();
+        }
+        public void openDB()
+        {
+            this.connection.Open();
+        }
         public void setConnection (SqlConnection temp)
         {
             this.connection = temp;
