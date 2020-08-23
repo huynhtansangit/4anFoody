@@ -73,6 +73,26 @@ namespace Viva_vegan.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ban_dang_dung {
+            get {
+                object obj = ResourceManager.GetObject("ban-dang-dung", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ban_trong {
+            get {
+                object obj = ResourceManager.GetObject("ban-trong", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap banner_dashboard {
             get {
                 object obj = ResourceManager.GetObject("banner-dashboard", resourceCulture);

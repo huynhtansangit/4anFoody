@@ -18,6 +18,7 @@ namespace Viva_vegan
         public Login()
         {
             InitializeComponent();
+            txtusername.Focus();
             this.AcceptButton = btndangnhap;
             conDB = new ClassCSharp.ConnectDataBase("");
         }
@@ -47,18 +48,10 @@ namespace Viva_vegan
             }
             else
             {
-                String querylogin ="select * from nhanvien where tendangnhap='" +
-                    name.Trim() + "' and matkhau='" +
-                    pass.Trim() + "'";
-                if (conDB.getConnection() != null && conDB.getConnection().State == ConnectionState.Closed)
-                {
-                    conDB.getConnection().Open();
-                }
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(querylogin, conDB.getConnection());
-                DataTable dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
-                conDB.getConnection().Close();
-                if (dataTable.Rows.Count == 1)
+                String querylogin = "dangkydangnhap @MANV @TENDANGNHAP @MATKHAU @Request";
+                DataTable dataTable = ClassCSharp.ConnectDataBase.SessionConnect.executeQuery(querylogin,
+                    new object[] { " ", name.Trim() , pass.Trim(), "login" });
+                if (dataTable.Rows.Count != 0)
                 {
                     ClassCSharp.User.Manv= dataTable.Rows[0].Field<String>(0);
                     ClassCSharp.User.Macv = dataTable.Rows[0].Field<String>(1);

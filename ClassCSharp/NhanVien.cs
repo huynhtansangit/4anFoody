@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace Viva_vegan.ClassCSharp
         private String matkhau;
         private DateTime ngayvaolam;
 
+        #region Getter and Setter
         public NhanVien(string manv, string macv, string mabp, string tennv, string dienthoai, string email, string diachi, string sotk, string tendangnhap, string matkhau, DateTime ngayvaolam)
         {
             this.manv = manv;
@@ -34,7 +36,9 @@ namespace Viva_vegan.ClassCSharp
             this.matkhau = matkhau;
             this.ngayvaolam = ngayvaolam;
         }
-
+        public NhanVien()
+        {
+        }
         //Method 
         public String Manv { get => manv; set => manv = value; }
         public String Mabp { get => mabp; set => mabp = value; }
@@ -47,5 +51,39 @@ namespace Viva_vegan.ClassCSharp
         public String Tendangnhap { get => tendangnhap; set => tendangnhap = value; }
         public String Matkhau { get => matkhau; set => matkhau = value; }
         public DateTime Ngayvaolam { get => ngayvaolam; set => ngayvaolam = value; }
+        #endregion
+        #region Methods
+        public String taoManv()
+        {
+            int count = (int)ConnectDataBase.SessionConnect.executeScalar("SELECT COUNT(*) FROM nhanvien")+1;
+            return "NV" + Convert.ToString(count);
+        }
+        public DataTable loadTableNhanVien (String input,String timtheo=null)
+        {
+            String query = "select * from nhanvien";
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                query = "select * from nhanvien";
+                DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
+                return table;
+            }
+            else
+            {
+                
+                if (timtheo.Contains("Tên"))
+                {
+                    query = "select * from nhanvien where tennv like N'%" +
+                    input.Trim() + "%'";
+                }
+                else if (timtheo.Contains("Mã"))
+                {
+                    query = "select * from nhanvien where manv like '%" +
+                    input.Trim() + "%'";
+                }
+                DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
+                return table;
+            }
+        }
+        #endregion
     }
 }

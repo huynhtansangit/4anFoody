@@ -24,96 +24,18 @@ namespace Viva_vegan
         public Dashboard()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
             lblDate.Text = DateTime.Now.ToLongDateString();
             StartTimer();
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(4, 46);
             pnNavi.Controls.Add(leftBorderBtn);
-            setTenNhanVien();
+            lbltenformhientai.Text = "Home" + "     Hello, " +
+                ClassCSharp.User.Tennv;
 
         }
         //ClassCSharp.User.Ngayvaolam.ToString("dd/MM/yyyy")
-        private void setTenNhanVien ()
-        {
-            lblchao.Text = "Hello, " +
-                ClassCSharp.User.Tennv;
-        }
-        private void minimizeDashboard(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-        //Structs
-        private struct RGBColors
-        {
-            public static Color color1 = Color.FromArgb(252, 68, 68);
-            public static Color color2 = Color.FromArgb(252, 68, 68);
-            public static Color color3 = Color.FromArgb(252, 68, 68);
-            public static Color color4 = Color.FromArgb(252, 68, 68);
-            public static Color color5 = Color.FromArgb(252, 68, 68);
-            public static Color color6 = Color.FromArgb(252, 68, 68);
-        }
-        //Methods
-        private void openChildForm (Form childForm)
-        {
-            if (currentChildForm !=null)
-            {
-                // chỉ mở một form
-                currentChildForm.Close();
-            }
-            currentChildForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            pndesktop.Controls.Add(childForm);
-            pndesktop.Tag = childForm;
-            childForm.BringToFront();
-            childForm.Show();
-        }
-        private void activeButton (object sender, Color color)
-        {
-            disableButton();
-            if (sender!=null)
-            {
-                currentButton = (IconButton)sender;
-                currentButton.BackColor = Color.WhiteSmoke;
-                currentButton.ForeColor = color;
-                currentButton.TextAlign = ContentAlignment.MiddleCenter;
-                currentButton.IconColor = color;
-                currentButton.TextImageRelation = TextImageRelation.TextBeforeImage;
-                currentButton.ImageAlign = ContentAlignment.MiddleRight;
-                //left border panel
-                leftBorderBtn.BackColor = color;
-                leftBorderBtn.Location = new Point(0, currentButton.Location.Y);
-                leftBorderBtn.Visible = true;
-                leftBorderBtn.BringToFront();
-                //icon and label form hiện tại
-                iconFormhientai.IconChar = currentButton.IconChar;
-                iconFormhientai.IconColor = Color.White;
-                lbltenformhientai.Text = currentButton.Text;
-                lbltenformhientai.ForeColor = Color.FromArgb(6, 56, 108); ;
-            }
-        }
-        private void disableButton ()
-        {
-            if(currentButton!=null)
-            {
-                currentButton.BackColor = Color.White;
-                currentButton.ForeColor = Color.FromArgb(5, 56, 107);
-                currentButton.TextAlign = ContentAlignment.MiddleLeft;
-                currentButton.IconColor = Color.FromArgb(5, 56, 107);
-                currentButton.TextImageRelation = TextImageRelation.ImageBeforeText;
-                currentButton.ImageAlign = ContentAlignment.MiddleLeft;
-            }
-        }
-        System.Windows.Forms.Timer t = null;
-        private void StartTimer()
-        {
-            t = new System.Windows.Forms.Timer();
-            t.Interval = 1000;
-            t.Tick += new EventHandler(t_Tick);
-            t.Enabled = true;
-        }
-
+        #region Events
         void t_Tick(object sender, EventArgs e)
         {
             lblTime.Text = DateTime.Now.ToString();
@@ -121,9 +43,9 @@ namespace Viva_vegan
 
         private void Btnbangdieukhien_Click(object sender, EventArgs e)
         {
-            if (ClassCSharp.User.Macv !="CVQL")
+            if (ClassCSharp.User.Macv != "CVQL")
             {
-                MessageBox.Show("Xin lỗi! Bạn không có quyền truy cập mục này","Thông báo", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Xin lỗi! Bạn không có quyền truy cập mục này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -175,15 +97,7 @@ namespace Viva_vegan
                 currentChildForm.Close();
             }
         }
-        private void Reset()
-        {
-            disableButton();
-            leftBorderBtn.Visible = false;
-            iconFormhientai.IconChar = IconChar.Home;
-            iconFormhientai.IconColor = Color.FromArgb(6, 56, 108);
-            lbltenformhientai.Text = "Home";
-            lbltenformhientai.ForeColor = Color.FromArgb(6, 56, 108);
-        }
+
 
         private void LblTime_Click(object sender, EventArgs e)
         {
@@ -208,7 +122,7 @@ namespace Viva_vegan
         private void Btnlogout_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Đăng xuất khỏi ứng dụng ?", "Confirmation", MessageBoxButtons.YesNo);
-            if(result==DialogResult.Yes)
+            if (result == DialogResult.Yes)
             {
                 Application.Restart();
             }
@@ -223,6 +137,96 @@ namespace Viva_vegan
         {
             System.Diagnostics.Process.Start("https://4anvegetarian.vn");
         }
-        
+        #endregion
+
+        #region Methods
+        private void minimizeDashboard(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        //Structs
+        private struct RGBColors
+        {
+            public static Color color1 = Color.FromArgb(252, 68, 68);
+            public static Color color2 = Color.FromArgb(252, 68, 68);
+            public static Color color3 = Color.FromArgb(252, 68, 68);
+            public static Color color4 = Color.FromArgb(252, 68, 68);
+            public static Color color5 = Color.FromArgb(252, 68, 68);
+            public static Color color6 = Color.FromArgb(252, 68, 68);
+        }
+        //Methods
+        private void openChildForm(Form childForm)
+        {
+            if (currentChildForm != null)
+            {
+                // chỉ mở một form
+                currentChildForm.Close();
+            }
+            currentChildForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            pndesktop.Controls.Add(childForm);
+            pndesktop.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+        private void activeButton(object sender, Color color)
+        {
+            disableButton();
+            if (sender != null)
+            {
+                currentButton = (IconButton)sender;
+                currentButton.BackColor = Color.WhiteSmoke;
+                currentButton.ForeColor = color;
+                currentButton.TextAlign = ContentAlignment.MiddleCenter;
+                currentButton.IconColor = color;
+                currentButton.TextImageRelation = TextImageRelation.TextBeforeImage;
+                currentButton.ImageAlign = ContentAlignment.MiddleRight;
+                //left border panel
+                leftBorderBtn.BackColor = color;
+                leftBorderBtn.Location = new Point(0, currentButton.Location.Y);
+                leftBorderBtn.Visible = true;
+                leftBorderBtn.BringToFront();
+                //icon and label form hiện tại
+                iconFormhientai.IconChar = currentButton.IconChar;
+                iconFormhientai.IconColor = Color.White;
+                lbltenformhientai.Text = currentButton.Text +"      Hello, " +
+                ClassCSharp.User.Tennv;
+                lbltenformhientai.ForeColor = Color.FromArgb(6, 56, 108); ;
+            }
+        }
+        private void disableButton()
+        {
+            if (currentButton != null)
+            {
+                currentButton.BackColor = Color.White;
+                currentButton.ForeColor = Color.FromArgb(5, 56, 107);
+                currentButton.TextAlign = ContentAlignment.MiddleLeft;
+                currentButton.IconColor = Color.FromArgb(5, 56, 107);
+                currentButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+                currentButton.ImageAlign = ContentAlignment.MiddleLeft;
+            }
+        }
+        System.Windows.Forms.Timer t = null;
+        private void StartTimer()
+        {
+            t = new System.Windows.Forms.Timer();
+            t.Interval = 1000;
+            t.Tick += new EventHandler(t_Tick);
+            t.Enabled = true;
+        }
+        private void Reset()
+        {
+            disableButton();
+            leftBorderBtn.Visible = false;
+            iconFormhientai.IconChar = IconChar.Home;
+            iconFormhientai.IconColor = Color.FromArgb(6, 56, 108);
+            lbltenformhientai.Text = "Home" + "     Hello, " +
+                ClassCSharp.User.Tennv;
+            lbltenformhientai.ForeColor = Color.FromArgb(6, 56, 108);
+        }
+        #endregion
+
     }
 }

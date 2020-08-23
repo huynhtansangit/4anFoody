@@ -112,7 +112,6 @@
             this.txttendangnhap.Name = "txttendangnhap";
             this.txttendangnhap.Size = new System.Drawing.Size(272, 22);
             this.txttendangnhap.TabIndex = 6;
-            this.txttendangnhap.TextChanged += new System.EventHandler(this.TextBox2_TextChanged);
             // 
             // txtpassword
             // 

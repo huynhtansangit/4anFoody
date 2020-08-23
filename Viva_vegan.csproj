@@ -201,6 +201,8 @@
     <Content Include="FormDashboard\.README.txt" />
     <Content Include="MetroFramework.txt" />
     <Content Include=".README.txt" />
+    <None Include="Resources\ban-trong.png" />
+    <None Include="Resources\ban-dang-dung.png" />
     <None Include="Resources\an1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

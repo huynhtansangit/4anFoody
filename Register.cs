@@ -13,18 +13,10 @@ namespace Viva_vegan
 {
     public partial class Register : Form
     {
-        private ClassCSharp.ConnectDataBase conn;
         public Register()
         {
             InitializeComponent();
-            conn = new ClassCSharp.ConnectDataBase("");
         }
-
-        private void TextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Btntrolai_Click(object sender, EventArgs e)
         {
             Application.Restart();
@@ -41,35 +33,24 @@ namespace Viva_vegan
             }
             else
             {
-                if (conn.getConnection() != null && conn.getConnection().State == ConnectionState.Closed)
-                {
-                    conn.getConnection().Open();
-                }
+                
                 String queryTim = "Select manv,tennv,sotaikhoannv,diachinv from nhanvien where manv='" +
-                    input + "' or tennv= N'" +
-                    input + "'";
-                Console.WriteLine(queryTim);
-                SqlCommand cmd = new SqlCommand(queryTim, conn.getConnection());
-                SqlDataReader rd = cmd.ExecuteReader();
-                if (!rd.HasRows)
+                    input + "' or tennv like N'%" +
+                    input + "%'";
+                DataTable dataTable = ClassCSharp.ConnectDataBase.SessionConnect.executeQuery(queryTim);
+                if (dataTable.Rows.Count<1)
                 {
                     MessageBox.Show("Không tìm thấy kết quả nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    conn.getConnection().Close();
                 }
                 else
                 {
-                    String tempManv="";
-                    while (rd.Read())
+                    foreach (DataRow row in dataTable.Rows)
                     {
-                        cbbketquatim.Items.Add(rd.GetString(0));
-                        tempManv = rd.GetString(0);
-                        cardThongtin.Text1 = rd.GetString(1);
-                        cardThongtin.Text2 = rd.GetString(2);
-                        cardThongtin.Text3 = rd.GetString(3);
+                        cbbketquatim.Items.Add(row["manv"].ToString());
+                        cardThongtin.Text1 = row["tennv"].ToString();
+                        cardThongtin.Text2 = row["sotaikhoannv"].ToString();
+                        cardThongtin.Text3 = row["diachinv"].ToString();
                     }
-                    
-                    conn.getConnection().Close();
-                    cbbketquatim.Text = tempManv;
                 }
             }
         }
@@ -85,21 +66,17 @@ namespace Viva_vegan
         private void Cbbketquatim_SelectedIndexChanged(object sender, EventArgs e)
         {
             String itemSelected = cbbketquatim.Text;
-            if (conn.getConnection() != null && conn.getConnection().State == ConnectionState.Closed)
-            {
-                conn.getConnection().Open();
-            }
-            String queryTim = "Select manv,tennv,sotaikhoannv,diachinv from nhanvien where manv='" +
+            String queryTim = "Select * from nhanvien where manv='" +
                 itemSelected + "'";
-            Console.WriteLine(queryTim);
-            SqlCommand cmd = new SqlCommand(queryTim, conn.getConnection());
-            SqlDataReader rd = cmd.ExecuteReader();
-            while (rd.Read()) {
-                cardThongtin.Text1 = rd.GetString(1);
-                cardThongtin.Text2 = rd.GetString(2);
-                cardThongtin.Text3 = rd.GetString(3);
+            DataTable dataTable = ClassCSharp.ConnectDataBase.SessionConnect.executeQuery(queryTim);
+            foreach (DataRow row in dataTable.Rows)
+            {
+                cardThongtin.Text1 = row["tennv"].ToString();
+                cardThongtin.Text2 = row["sotaikhoannv"].ToString();
+                cardThongtin.Text3 = row["diachinv"].ToString();
+                txttendangnhap.Text= row["tendangnhap"].ToString();
+                txtpassword.Text = row["matkhau"].ToString();
             }
-            conn.getConnection().Close();
         }
 
         private void Btndangky_Click(object sender, EventArgs e)
@@ -115,21 +92,12 @@ namespace Viva_vegan
                 }
                 else
                 {
-                    if (conn.getConnection() != null && conn.getConnection().State == ConnectionState.Closed)
-                    {
-                        conn.getConnection().Open();
-                    }
-                    SqlCommand cmd = new SqlCommand("dangkydangnhap", conn.getConnection());
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@MANV", manv);
-                    cmd.Parameters.AddWithValue("@TENDANGNHAP", tendangnhap.Trim());
-                    cmd.Parameters.AddWithValue("@MATKHAU", pass.Trim());
-                    cmd.Parameters.AddWithValue("@Request", "register");
-                    var returnValue=cmd.Parameters.Add("@result", SqlDbType.Int);
-                    returnValue.Direction = ParameterDirection.ReturnValue;
-                    cmd.ExecuteNonQuery();
-                    var result = returnValue.Value;
-                    if (Convert.ToInt16(result)==1)
+                    String query = "dangkydangnhap @MANV , @TENDANGNHAP , @MATKHAU , @Request";
+                    int result = ClassCSharp.ConnectDataBase.SessionConnect.executeNonQuery(query, 
+                        new object[] { manv.Trim(),
+                        tendangnhap.Trim(),
+                        pass.Trim(), "register" });
+                    if (result==1)
                     {
                         MessageBox.Show("Đăng ký thành công !", "Thông báo", MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
                     }
@@ -137,7 +105,6 @@ namespace Viva_vegan
                     {
                         MessageBox.Show("Tên đăng nhập đã tồn tại !");
                     }
-                    conn.getConnection().Close();
                 }
             }
             else
