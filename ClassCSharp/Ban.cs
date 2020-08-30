@@ -65,6 +65,26 @@ namespace Viva_vegan.ClassCSharp
             DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
             return table;
         }
+        public int setBusy (String maban)
+        {
+            string query = "update ban set tinhtrangban = 'busy' where soban='" + maban+
+                "'";
+            int result = ConnectDataBase.SessionConnect.executeNonQuery(query);
+            return result;
+        }
+        public int setEmpty(String maban)
+        {
+            string query = "update ban set tinhtrangban = 'empty' where soban='" + maban +
+                "'";
+            int result = ConnectDataBase.SessionConnect.executeNonQuery(query);
+            return result;
+        }
+        public int setAllBanEmpty ()
+        {
+            string query = "update ban set tinhtrangban = 'empty' ";
+            int result = ConnectDataBase.SessionConnect.executeNonQuery(query);
+            return result;
+        }
         #endregion
     }
 }

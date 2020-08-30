@@ -33,6 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FontAwesome.Sharp, Version=5.14.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\FontAwesome.Sharp.5.14.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
     </Reference>
@@ -46,6 +51,9 @@
     <Reference Include="MetroFramework.Fonts, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="MindFusion.Charting, Version=4.1.2.450, Culture=neutral, PublicKeyToken=dd7449df9ffcc455" />
     <Reference Include="MindFusion.Charting.WinForms, Version=4.1.2.450, Culture=neutral, PublicKeyToken=dd7449df9ffcc455, processorArchitecture=MSIL" />
     <Reference Include="MindFusion.Common, Version=1.3.3.451, Culture=neutral, PublicKeyToken=dd7449df9ffcc455" />
@@ -53,7 +61,10 @@
     <Reference Include="MindFusion.Pdf, Version=1.3.2.451, Culture=neutral, PublicKeyToken=dd7449df9ffcc455" />
     <Reference Include="MindFusion.Svg, Version=1.2.2.451, Culture=neutral, PublicKeyToken=dd7449df9ffcc455" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,9 +80,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassCSharp\Ban.cs" />
+    <Compile Include="ClassCSharp\BanDangHoatDong.cs" />
     <Compile Include="ClassCSharp\BoPhan.cs" />
+    <Compile Include="ClassCSharp\ChiTietHoaDon.cs" />
     <Compile Include="ClassCSharp\ChucVu.cs" />
     <Compile Include="ClassCSharp\ConnectDataBase.cs" />
+    <Compile Include="ClassCSharp\HoaDon.cs" />
     <Compile Include="ClassCSharp\KhuVuc.cs" />
     <Compile Include="ClassCSharp\MonAn.cs" />
     <Compile Include="ClassCSharp\NhanVien.cs" />
@@ -100,6 +114,25 @@
     </Compile>
     <Compile Include="FormDashboard\GoiMon.Designer.cs">
       <DependentUpon>GoiMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDashboard\GoiMonChild\ChiTietHoaDonBill.cs" />
+    <Compile Include="FormDashboard\GoiMonChild\FormBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashboard\GoiMonChild\FormBan.Designer.cs">
+      <DependentUpon>FormBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDashboard\GoiMonChild\FormPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashboard\GoiMonChild\FormPrint.Designer.cs">
+      <DependentUpon>FormPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDashboard\GoiMonChild\HoaDonReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HoaDonReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="FormDashboard\HoatDongGanDay.cs">
       <SubType>Form</SubType>
@@ -133,6 +166,7 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,6 +178,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDashboard\GoiMon.resx">
       <DependentUpon>GoiMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboard\GoiMonChild\FormBan.resx">
+      <DependentUpon>FormBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboard\GoiMonChild\FormPrint.resx">
+      <DependentUpon>FormPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboard\GoiMonChild\HoaDonReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HoaDonReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDashboard\HoatDongGanDay.resx">
       <DependentUpon>HoatDongGanDay.cs</DependentUpon>
@@ -201,9 +245,28 @@
     <Content Include="FormDashboard\.README.txt" />
     <Content Include="MetroFramework.txt" />
     <Content Include=".README.txt" />
+    <None Include="Resources\icons8_cash_125px.png" />
+    <None Include="Resources\icons8_update_125px.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\icons8_trash_128px.png" />
     <None Include="Resources\ban-trong.png" />
     <None Include="Resources\ban-dang-dung.png" />
     <None Include="Resources\an1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

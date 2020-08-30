@@ -135,6 +135,7 @@ namespace Viva_vegan.FormDashboard
                 txttendangnhap.Text = row.Cells["tendangnhap"].Value.ToString();
                 txtmatkhau.Text = row.Cells["matkhau"].Value.ToString();
                 txtsodt.Text = row.Cells["dienthoainv"].Value.ToString();
+                dgvnhanvien.Tag = row.Cells["manv"].Value.ToString();
             }
         }
 
