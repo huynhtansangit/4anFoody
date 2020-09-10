@@ -17,7 +17,7 @@ namespace Viva_vegan.ClassCSharp
         private String httt;
         private String soban;
         private String tinhtranghd;
-        private float vat;
+        private Int32 vat;
         private Int32 tiensauthue;
         private Int32 tiennhankh;
         private Int32 tientralaikh;
@@ -32,7 +32,7 @@ namespace Viva_vegan.ClassCSharp
             string httt,
             string soban,
             string tinhtranghd,
-            float vat,
+            Int32 vat,
             int tiensauthue,
             int tiennhankh,
             int tientralaikh)
@@ -51,7 +51,7 @@ namespace Viva_vegan.ClassCSharp
             this.tientralaikh = tientralaikh;
         }
         public HoaDon(
-            DataRow row)
+            DataRow row)    
         {
             this.mahd = row["MAHD"].ToString();
             this.makh = row["MAKH"].ToString();
@@ -61,10 +61,10 @@ namespace Viva_vegan.ClassCSharp
             this.httt = row["HTTT"].ToString();
             this.soban = row["SOBAN"].ToString();
             this.tinhtranghd = row["TINHTRANGHD"].ToString();
-            this.vat =Convert.ToInt16( row["VAT"]);
-            this.tiensauthue = Convert.ToInt16(row["TIENSAUTHUE"]);
-            this.tiennhankh = Convert.ToInt16(row["TIENNHANKH"]);
-            this.tientralaikh = Convert.ToInt16(row["TIENTRALAIKH"]);
+            this.vat =Convert.ToInt32( row["VAT"]);
+            this.tiensauthue = Convert.ToInt32(row["TIENSAUTHUE"]);
+            this.tiennhankh = Convert.ToInt32(row["TIENNHANKH"]);
+            this.tientralaikh = Convert.ToInt32(row["TIENTRALAIKH"]);
         }
         public HoaDon()
         {
@@ -78,7 +78,7 @@ namespace Viva_vegan.ClassCSharp
         public string Httt { get => httt; set => httt = value; }
         public string Soban { get => soban; set => soban = value; }
         public string Tinhtranghd { get => tinhtranghd; set => tinhtranghd = value; }
-        public float Vat { get => vat; set => vat = value; }
+        public Int32 Vat { get => vat; set => vat = value; }
         public int Tiensauthue { get => tiensauthue; set => tiensauthue = value; }
         public int Tiennhankh { get => tiennhankh; set => tiennhankh = value; }
         public int Tientralaikh { get => tientralaikh; set => tientralaikh = value; }
@@ -103,10 +103,14 @@ namespace Viva_vegan.ClassCSharp
         }
         public HoaDon getHoaDonWithId (String mahoadon)
         {
+            HoaDon hoaDon = new HoaDon();
             String query = "select * from hoadon where mahd='" +mahoadon+
                 "'";
             DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
-            HoaDon hoaDon = new HoaDon(table.Rows[0]);
+            if(table.Rows.Count>0)
+            {
+                hoaDon = new HoaDon(table.Rows[0]);
+            }
             return hoaDon;
         }
         public String taoMaHoaDon ()
@@ -155,6 +159,20 @@ namespace Viva_vegan.ClassCSharp
                     this.Tiennhankh,
                     this.Tientralaikh,
                     "update" });
+            return result;
+        }
+        public long getSoTienBanDuocFromNhanvien (String manv)
+        {
+            String qr = "select sum(TIENSAUTHUE-vat) from HOADON where manv='" +manv+
+                "' group by manv";
+            long result = Convert.ToInt64(ConnectDataBase.SessionConnect.executeScalar(qr));
+            return result;
+        }
+        public int getSoHDBanDuocFromNhanvien(String manv)
+        {
+            String qr = "select count(mahd) from HOADON where manv='" + manv +
+                "' group by manv";
+            int result = Convert.ToInt32(ConnectDataBase.SessionConnect.executeScalar(qr));
             return result;
         }
         #endregion

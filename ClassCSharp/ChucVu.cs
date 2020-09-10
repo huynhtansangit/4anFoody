@@ -20,11 +20,21 @@ namespace Viva_vegan.ClassCSharp
             this.macv = macv;
             this.tencv = tencv;
         }
-
         public String Macv { set => macv = value; get => macv; }
         public String Tencv { set => tencv = value; get => tencv; }
         #endregion
-
+        public String getTencvFromMacv (String macv)
+        {
+            String query = "select tencv from chucvu where macv='" + macv +
+                "'";
+            String tencv = "";
+            DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
+            foreach (DataRow row in table.Rows)
+            {
+                tencv=row["tencv"].ToString();
+            }
+            return tencv;
+        }
         #region Methods
         public List<ChucVu> loadListChucVu()
         {

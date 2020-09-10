@@ -38,7 +38,18 @@ namespace Viva_vegan.ClassCSharp
             }
             return list;
         }
-
+        public String getTenBpFromMaBp (String mabp)
+        {
+            String query = "select tenbp from bophan where mabp='" + mabp +
+                "'";
+            String tenbp = "";
+            DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
+            foreach (DataRow row in table.Rows)
+            {
+                tenbp = row["tenbp"].ToString();
+            }
+            return tenbp;
+        }
         #endregion
     }
 }

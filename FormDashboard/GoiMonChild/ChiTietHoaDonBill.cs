@@ -57,7 +57,10 @@ namespace Viva_vegan.FormDashboard.GoiMonChild
                     {
                         list.Add(new ChiTietHoaDonBill(
                             row["MAHD"].ToString(),
-                            row[0].ToString(),
+                            row[0].ToString(),// mã món tại nó nằm vị trí đầu tiên trong bảng nên index=0
+                            //chỗ này m có 2 cách lấy value của row
+                            //1. row["tên cột"].tostring
+                            //2. row[số thứ tự của cột]
                             row["TENMON"].ToString(),
                             row["MAKM"].ToString(),
                             row["DVT"].ToString(),

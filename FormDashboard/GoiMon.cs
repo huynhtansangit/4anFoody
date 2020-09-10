@@ -30,6 +30,7 @@ namespace Viva_vegan.FormDashboard
             resizeDgvHoadon();
             txbtienkhachdua.Enabled = false;
         }
+
         public string btnText
         {
             get
@@ -95,6 +96,26 @@ namespace Viva_vegan.FormDashboard
                 pnBan.Tag = childForm;
                 childForm.BringToFront();
                 childForm.Show();
+            }
+        }
+        private void loadTheoTuKhoa (string ThucanNuocuong,String tukhoa)
+        {
+            flpthucdon.Controls.Clear();
+            if (ThucanNuocuong.Contains("thucuong"))
+            {
+                GetThucUongs = new ThucUong().getThucUongTheoTuKhoa(tukhoa, cbbtimtheo.Text);
+                foreach (ThucUong item in GetThucUongs)
+                {
+                    flpthucdon.Controls.Add(groupMonAnThucUong("thucuong",null, item));
+                }
+            }
+            else if(ThucanNuocuong.Contains("monan"))
+            {
+                GetMonAns = new MonAn().getMonAnTheoTuKhoa(tukhoa, cbbtimtheo.Text);
+                foreach (MonAn item in GetMonAns)
+                {
+                    flpthucdon.Controls.Add(groupMonAnThucUong("monan", item));
+                }
             }
         }
         private void loadMonAnThucUong(string ThucanNuocuong,String order =null)
@@ -254,7 +275,7 @@ namespace Viva_vegan.FormDashboard
         {
             String ma = (sender as PictureBox).Tag.ToString();
             DataGridViewRow row = (DataGridViewRow)dgvhoadon.Rows[0].Clone();
-            if (ma.Contains("MA")&!daTonTaiTrongDgv(ma))
+            if (ma.Contains("MA") & !daTonTaiTrongDgv(ma))
             {
                 MonAn monAn = new MonAn(ma);
                 row.Cells[0].Value = monAn.Mamon;
@@ -396,14 +417,17 @@ namespace Viva_vegan.FormDashboard
                     }
                     else loadMonAnThucUong("thucuong", "cao");
                 }
-                else if(cbbtimtheo.Text.Contains("Mã") && !String.IsNullOrWhiteSpace(txttimkiem.Text))
+                else if( !String.IsNullOrWhiteSpace(txttimkiem.Text))
                 {
-
+                    if (rbtndoan.Checked)
+                    {
+                        loadTheoTuKhoa("monan", txttimkiem.Text);      // biến truyền vào hàm này
+                        // là tìm theo cái gì, từ khóa.
+                    }
+                    else loadTheoTuKhoa("thucuong", txttimkiem.Text);
+                    
                 }
-                else if (cbbtimtheo.Text.Contains("Tên") && !String.IsNullOrWhiteSpace(txttimkiem.Text))
-                {
-
-                }
+                
             }
         }
         private void Btngoimonthanhtoan_Click(object sender, EventArgs e)
@@ -446,7 +470,7 @@ namespace Viva_vegan.FormDashboard
                     "Tien mat",
                     ban.Soban,
                     "Đã thanh toán",
-                    (float)(Convert.ToInt32(btnvat.Tag)),
+                    (Int32)(Convert.ToInt32(btnvat.Tag)),
                     Convert.ToInt32(btnthanhtien.Tag) + Convert.ToInt32(btnvat.Tag),
                     Convert.ToInt32(txbtienkhachdua.Text),
                     Convert.ToInt32(btntienthua.Tag));
@@ -487,7 +511,7 @@ namespace Viva_vegan.FormDashboard
                     MessageBox.Show("Lỗi chuyển trạng thái bàn");
                 }
                 // Không được bỏ trống mahd, manv, ngaylap, soban, request -- TẠO HÓA ĐƠN
-                HoaDon hoaDon = new HoaDon(mahoadon, "KH000", User.Manv, DateTime.Now, "", "", ban.Soban, "Chưa thanh toán", (float)0.1, 0, 0, 0);
+                HoaDon hoaDon = new HoaDon(mahoadon, "KH000", User.Manv, DateTime.Now, "", "", ban.Soban, "Chưa thanh toán", (Int32)0.1, 0, 0, 0);
                 int resultTaoHoaDon = hoaDon.taoHoaDon(hoaDon);
                 if (resultTaoHoaDon == 0)
                 {
@@ -669,6 +693,21 @@ namespace Viva_vegan.FormDashboard
                 }
             }
         }
+        private int isClick = 0;
+        private void Txttimkiem_Click(object sender, EventArgs e)
+        {
+            isClick++;
+            if (isClick==1)
+            {
+                txttimkiem.Text = "";
+            }
+            else
+            {
+
+            }
+        }
         #endregion events
+
+
     }
 }

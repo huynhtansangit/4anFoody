@@ -12,9 +12,8 @@ namespace Viva_vegan.ClassCSharp
     {
         private SqlConnection connection;
         private String stringConnect;
-        private String stringAvailable = "Data Source=DESKTOP-S418B85\\SQLEXPRESS;Initial Catalog=QLNhaHang;Integrated Security=True";
+        private String stringAvailable = "Data Source=DESKTOP-S418B85\\SQLEXPRESS;Initial Catalog=QLNH30-08;Integrated Security=True";
         private static ConnectDataBase sessionConnect;
-
         public static ConnectDataBase SessionConnect
         {
             get { if (sessionConnect == null) sessionConnect = new ConnectDataBase(); return ConnectDataBase.sessionConnect; }
@@ -61,6 +60,36 @@ namespace Viva_vegan.ClassCSharp
                     foreach (String item in listParams)
                     {
                         if(item.Contains('@'))
+                        {
+                            cmd.Parameters.AddWithValue(item, paramaters[i]);
+                            i++;
+                        }
+                    }
+                }
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(table);
+                conn.Close();
+            }
+            return table;
+        }
+        public DataTable executeQueryNoProc(String query, Object[] paramaters = null)
+        {
+            DataTable table = new DataTable();
+            using (SqlConnection conn = new SqlConnection(this.stringAvailable))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                if (paramaters != null)
+                {
+
+                    String[] listParams = query.Split(' ');
+                    cmd = new SqlCommand(query, conn);
+                    cmd.CommandType = CommandType.Text;
+                    int i = 0;
+                    foreach (String item in listParams)
+                    {
+                        if (item.Contains('@'))
                         {
                             cmd.Parameters.AddWithValue(item, paramaters[i]);
                             i++;
@@ -129,9 +158,25 @@ namespace Viva_vegan.ClassCSharp
             }
             return data;
         }
+        public DataTable executeReaderDependency (SqlCommand cmd,String query =null)
+        {
+            DataTable table = new DataTable();
+            using (SqlConnection conn = new SqlConnection(this.stringAvailable))
+            {
+                conn.Open();
+                cmd.Connection = conn;
+                if(!String.IsNullOrWhiteSpace(query))
+                {
+                    cmd.CommandText = query;
+                }
+                table.Load(cmd.ExecuteReader(CommandBehavior.CloseConnection));
+                conn.Close();
+            }
+            return table;
+        }
         public SqlConnection getConnection()
         {
-            return this.connection;
+            return this.connection=new SqlConnection(stringAvailable);
         }
         public void closeDB()
         {
@@ -147,7 +192,7 @@ namespace Viva_vegan.ClassCSharp
         }
         public String getStringConnection()
         {
-            return this.stringConnect;
+            return this.stringAvailable;
         }
         public void setStringConnection(String temp)
         {

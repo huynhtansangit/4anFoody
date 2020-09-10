@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.pnNavi = new System.Windows.Forms.Panel();
             this.btnthongtin = new FontAwesome.Sharp.IconButton();
-            this.btnthanhtoan = new FontAwesome.Sharp.IconButton();
+            this.btnbaocao = new FontAwesome.Sharp.IconButton();
             this.btnhoatdong = new FontAwesome.Sharp.IconButton();
             this.btngoimon = new FontAwesome.Sharp.IconButton();
             this.btnbieudo = new FontAwesome.Sharp.IconButton();
@@ -65,7 +65,7 @@
             // 
             this.pnNavi.BackColor = System.Drawing.Color.White;
             this.pnNavi.Controls.Add(this.btnthongtin);
-            this.pnNavi.Controls.Add(this.btnthanhtoan);
+            this.pnNavi.Controls.Add(this.btnbaocao);
             this.pnNavi.Controls.Add(this.btnhoatdong);
             this.pnNavi.Controls.Add(this.btngoimon);
             this.pnNavi.Controls.Add(this.btnbieudo);
@@ -100,28 +100,28 @@
             this.btnthongtin.UseVisualStyleBackColor = true;
             this.btnthongtin.Click += new System.EventHandler(this.Btnthongtin_Click);
             // 
-            // btnthanhtoan
+            // btnbaocao
             // 
-            this.btnthanhtoan.FlatAppearance.BorderSize = 0;
-            this.btnthanhtoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnthanhtoan.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnthanhtoan.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnthanhtoan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(56)))), ((int)(((byte)(107)))));
-            this.btnthanhtoan.IconChar = FontAwesome.Sharp.IconChar.Calculator;
-            this.btnthanhtoan.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(56)))), ((int)(((byte)(107)))));
-            this.btnthanhtoan.IconSize = 35;
-            this.btnthanhtoan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnthanhtoan.Location = new System.Drawing.Point(3, 390);
-            this.btnthanhtoan.Name = "btnthanhtoan";
-            this.btnthanhtoan.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnthanhtoan.Rotation = 0D;
-            this.btnthanhtoan.Size = new System.Drawing.Size(246, 46);
-            this.btnthanhtoan.TabIndex = 14;
-            this.btnthanhtoan.Text = "Thanh toán";
-            this.btnthanhtoan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnthanhtoan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnthanhtoan.UseVisualStyleBackColor = true;
-            this.btnthanhtoan.Click += new System.EventHandler(this.Btnthanhtoan_Click);
+            this.btnbaocao.FlatAppearance.BorderSize = 0;
+            this.btnbaocao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnbaocao.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnbaocao.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbaocao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(56)))), ((int)(((byte)(107)))));
+            this.btnbaocao.IconChar = FontAwesome.Sharp.IconChar.Calculator;
+            this.btnbaocao.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(56)))), ((int)(((byte)(107)))));
+            this.btnbaocao.IconSize = 35;
+            this.btnbaocao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnbaocao.Location = new System.Drawing.Point(3, 390);
+            this.btnbaocao.Name = "btnbaocao";
+            this.btnbaocao.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnbaocao.Rotation = 0D;
+            this.btnbaocao.Size = new System.Drawing.Size(246, 46);
+            this.btnbaocao.TabIndex = 14;
+            this.btnbaocao.Text = "Báo cáo";
+            this.btnbaocao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnbaocao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnbaocao.UseVisualStyleBackColor = true;
+            this.btnbaocao.Click += new System.EventHandler(this.Btnthanhtoan_Click);
             // 
             // btnhoatdong
             // 
@@ -510,7 +510,7 @@
         #endregion
 
         private System.Windows.Forms.Panel pnNavi;
-        private FontAwesome.Sharp.IconButton btnthanhtoan;
+        private FontAwesome.Sharp.IconButton btnbaocao;
         private FontAwesome.Sharp.IconButton btnhoatdong;
         private FontAwesome.Sharp.IconButton btngoimon;
         private FontAwesome.Sharp.IconButton btnbieudo;

@@ -25,11 +25,19 @@ namespace Viva_vegan.FormDashboard.GoiMonChild
         private Ban ban;
         private String nhanvien;
         private String ngaylap;
-        public FormPrint(GoiMon goimon,String mahoadon)
+        public FormPrint(GoiMon goimon,String mahoadon,Boolean tuFormBaoCao =false)
         {
             InitializeComponent();
             GetGoiMon = goimon;
-            initData(mahoadon);
+            if(tuFormBaoCao==false)
+            {
+                initData(mahoadon);
+            }
+            else
+            {
+                initDataForBaoCao(mahoadon);
+            }
+            // hàm getchitiethoadon.... là để lấy chi tiết từ db truyền vào mã hóa đơn
             list = new ChiTietHoaDonBill().GetChiTietHoaDonBillsFromMaHoaDon(Mahoadon);
         }
         public void initData (String mahoadon)
@@ -40,14 +48,13 @@ namespace Viva_vegan.FormDashboard.GoiMonChild
             if (String.IsNullOrWhiteSpace(GetGoiMon.txbchietkhau.Text))
             {
                 chietkhau = 0;
-
             }
             else
             {
                 chietkhau = Convert.ToInt64(GetGoiMon.txbchietkhau.Text);
                 if (chietkhau < 100)
                 {
-                    chietkhau = Convert.ToInt64(((float)(100-chietkhau)/100) *(tientamtinh + vat));
+                    chietkhau = Convert.ToInt64(((float)(chietkhau)/100) *(tientamtinh + vat));
                 }
             } 
             km= Convert.ToInt32(GetGoiMon.btnkhuyenmai.Tag);
@@ -71,14 +78,36 @@ namespace Viva_vegan.FormDashboard.GoiMonChild
                 }
             }
         }
+        public void initDataForBaoCao(String mahoadon)
+        {
+            HoaDon hd = new HoaDon().getHoaDonWithId(mahoadon);
+            tientamtinh = Convert.ToInt64(hd.Tiensauthue-hd.Vat);
+            vat = Convert.ToInt32(GetGoiMon.btnvat.Tag);
 
+            chietkhau = 0;
+            km = 0;
+            tienkhachdua = hd.Tiennhankh;
+            tienthua = hd.Tientralaikh;
+            Mahoadon = mahoadon;
+            // ngày và nhân viên
+            ngaylap = hd.Ngaylap.ToLongDateString();
+            nhanvien = hd.Manv;
+        }
         private void CrystalReportViewer1_Load(object sender, EventArgs e)
         {
-            hoaDonReport1.SetDataSource ( list);
+            hoaDonReport1.SetDataSource ( list); // này là cái list món ăn thức uống trong hóa đơn
             hoaDonReport1.SetParameterValue("pKhachhang","Vãng lai");
             hoaDonReport1.SetParameterValue("pMahoadon", Mahoadon);
-            hoaDonReport1.SetParameterValue("pNgaylap", ngaylap);
-            hoaDonReport1.SetParameterValue("pNhanvien", nhanvien);
+            if (!String.IsNullOrWhiteSpace(ngaylap)&!String.IsNullOrWhiteSpace(nhanvien))
+            {
+                hoaDonReport1.SetParameterValue("pNgaylap", ngaylap);
+                hoaDonReport1.SetParameterValue("pNhanvien", nhanvien);
+            }
+            else
+            {
+                hoaDonReport1.SetParameterValue("pNgaylap", "Chưa xác nhận");
+                hoaDonReport1.SetParameterValue("pNhanvien", "Chưa xác nhận");
+            }
             hoaDonReport1.SetParameterValue("pVat", vat);
             hoaDonReport1.SetParameterValue("pChietkhau", chietkhau);
             hoaDonReport1.SetParameterValue("pTongtienphaitra", tientamtinh+vat-chietkhau);

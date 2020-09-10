@@ -80,7 +80,7 @@ namespace Viva_vegan
         private void Btnthanhtoan_Click(object sender, EventArgs e)
         {
             activeButton(sender, RGBColors.color5);
-            openChildForm(new FormDashboard.ThanhToan());
+            openChildForm(new FormDashboard.BaoCao());
         }
 
         private void Btnthongtin_Click(object sender, EventArgs e)
@@ -106,13 +106,13 @@ namespace Viva_vegan
 
         private void Btnfacebook_Click_1(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://www.facebook.com/dove.fonghoatuyetnguyet");
+            System.Diagnostics.Process.Start("https://www.facebook.com/kim.toa.99");
         }
 
         private void IconButton6_Click_1(object sender, EventArgs e)
         {
             String phoneContact = "0868952131";
-            String emailContact = "huynhtansangit1999@gmail.com";
+            String emailContact = "kimtoait1999@gmail.com";
             String message = String.Format("Số điện thoại: {0}\nEmail: {1}", phoneContact, emailContact);
             MessageBox.Show(message, "Thông tin liên hệ",
                                  MessageBoxButtons.OK,

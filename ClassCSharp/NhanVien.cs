@@ -36,6 +36,20 @@ namespace Viva_vegan.ClassCSharp
             this.matkhau = matkhau;
             this.ngayvaolam = ngayvaolam;
         }
+        public NhanVien(DataRow row)
+        {
+            this.manv       = row[0].ToString();
+            this.macv       = row[1].ToString();
+            this.mabp       = row[2].ToString();
+            this.tennv      = row[3].ToString();
+            this.dienthoai  = row[4].ToString();
+            this.email      = row[5].ToString();
+            this.diachi     = row[6].ToString();
+            this.sotk       = row[7].ToString();
+            this.tendangnhap= row[8].ToString();
+            this.matkhau    = row[9].ToString();
+            this.ngayvaolam = Convert.ToDateTime(row[10]);
+        }
         public NhanVien()
         {
         }
@@ -83,6 +97,21 @@ namespace Viva_vegan.ClassCSharp
                 DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
                 return table;
             }
+        }
+        public List<NhanVien> getListNhanVien()
+        {
+            List<NhanVien> nvs = new List<NhanVien>()
+;            String query = "select * from nhanvien";
+            DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
+            if (table.Rows.Count>0)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    nvs.Add(new NhanVien(row));
+                }
+
+            }
+            return nvs;
         }
         #endregion
     }

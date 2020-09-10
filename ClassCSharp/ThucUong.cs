@@ -16,7 +16,7 @@ namespace Viva_vegan.ClassCSharp
         private String mota;
         private String dvt;
         private byte[] hinh;
-
+        private int sl;
 
         public ThucUong(String mathucuong)
         {
@@ -49,6 +49,12 @@ namespace Viva_vegan.ClassCSharp
             }
 
         }
+        public ThucUong(DataRow row, Boolean isBestSeller)
+        {
+            this.Mathucuong = row[0].ToString();
+            this.Tenthucuong = row[1].ToString();
+            this.Sl = Convert.ToInt32(row[2]);
+        }
         public ThucUong()
         { }
         public ThucUong(string mathucuong, string tenthucuong, int giaban, string mota, string dvt, byte[] hinh)
@@ -60,7 +66,30 @@ namespace Viva_vegan.ClassCSharp
             this.dvt = dvt;
             this.hinh = hinh;
         }
-
+        public ThucUong(DataRow row)
+        {
+            if (row[5] == DBNull.Value)
+            {
+                ImageConverter converter = new ImageConverter();
+                Byte[] image = (byte[])converter.ConvertTo(Viva_vegan.Properties.Resources.an1, typeof(byte[]));
+                this.Mathucuong = row[0].ToString();
+                this.Tenthucuong = row[1].ToString();
+                this.Giaban = Convert.ToInt32(row["GIABAN"]);
+                this.Mota = row["MOTA"].ToString();
+                this.Dvt = row["DVT"].ToString();
+                this.Hinh = image;
+            }
+            else
+            {
+                this.Mathucuong = row[0].ToString();
+                this.Tenthucuong = row[1].ToString();
+                this.Giaban = Convert.ToInt32(row["GIABAN"]);
+                this.Mota = row["MOTA"].ToString();
+                this.Dvt = row["DVT"].ToString();
+                this.Hinh = (byte[])(row[5])
+;
+            }
+        }
 
         public int Giaban { get => giaban; set => giaban = value; }
         public string Mota { get => mota; set => mota = value; }
@@ -68,6 +97,7 @@ namespace Viva_vegan.ClassCSharp
         public string Dvt { get => dvt; set => dvt = value; }
         public string Mathucuong { get => mathucuong; set => mathucuong = value; }
         public string Tenthucuong { get => tenthucuong; set => tenthucuong = value; }
+        public int Sl { get => sl; set => sl = value; }
 
         #region Methods
         public List<ThucUong> GetThucUongs()
@@ -149,6 +179,32 @@ namespace Viva_vegan.ClassCSharp
                 "'";
             int result = ConnectDataBase.SessionConnect.executeNonQuery(query);
             return result;
+        }
+        public List<ThucUong> getThucUongTheoTuKhoa(String tukhoa, String timtheo = null)
+        {
+            List<ThucUong> list = new List<ThucUong>();
+            String query = "";
+            if (timtheo.Contains("Mã"))
+            {
+                query = "select * from ThucUong where mathucuong like N'%" + tukhoa +
+                    "%'";
+                DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
+                foreach (DataRow row in table.Rows)
+                {
+                    list.Add(new ThucUong(row));
+                }
+            }
+            else if (timtheo.Contains("Tên"))
+            {
+                query = "select * from ThucUong where tenthucuong like N'%" + tukhoa +
+                    "%'";
+                DataTable table = ConnectDataBase.SessionConnect.executeQuery(query);
+                foreach (DataRow row in table.Rows)
+                {
+                    list.Add(new ThucUong(row));
+                }
+            }
+            return list;
         }
         #endregion
     }

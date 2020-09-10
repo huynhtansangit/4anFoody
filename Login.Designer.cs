@@ -158,7 +158,7 @@
             this.txtusername.Name = "txtusername";
             this.txtusername.Size = new System.Drawing.Size(264, 25);
             this.txtusername.TabIndex = 2;
-            this.txtusername.Text = "huyql";
+            this.txtusername.Text = "kimtoa";
             this.txtusername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel2
@@ -251,7 +251,7 @@
             this.txtpassword.PasswordChar = '*';
             this.txtpassword.Size = new System.Drawing.Size(264, 25);
             this.txtpassword.TabIndex = 4;
-            this.txtpassword.Text = "huy123";
+            this.txtpassword.Text = "toa123";
             this.txtpassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
